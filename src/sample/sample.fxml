@@ -1,94 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <top>
-      <Pane prefHeight="113.0" prefWidth="1070.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+<SplitPane dividerPositions="0.6696542893725992" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="783.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="sample.Controller">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <Button fx:id="fruitButton" layoutX="498.0" layoutY="45.0" mnemonicParsing="false" onAction="#categoryButtonPushed" text="Frukt" />
-            <Button fx:id="vegetableButton" layoutX="438.0" layoutY="76.0" mnemonicParsing="false" text="Grönsaker" />
-            <Button fx:id="produceButton" layoutX="534.0" layoutY="76.0" mnemonicParsing="false" text="Kött o Fisk" />
-            <Button fx:id="breadButton" layoutX="403.0" layoutY="45.0" mnemonicParsing="false" text="Bröd" />
-            <Button fx:id="pantryButton" layoutX="360.0" layoutY="76.0" mnemonicParsing="false" text="Skafferi" />
-            <Button fx:id="drinksButton" layoutX="594.0" layoutY="45.0" mnemonicParsing="false" text="Dryck" />
-            <Button fx:id="sweetButton" layoutX="326.0" layoutY="45.0" mnemonicParsing="false" text="Sött" />
-            <Button fx:id="dairyButton" layoutX="288.0" layoutY="76.0" mnemonicParsing="false" text="Mejeri" />
-            <TextField fx:id="searchField" layoutX="284.0" layoutY="14.0" prefHeight="27.0" prefWidth="372.0" promptText="Sök..." />
-            <Button layoutX="656.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="58.0" text="SÖK" />
-            <Hyperlink layoutX="984.0" layoutY="7.0" prefHeight="29.0" prefWidth="72.0" text="Min Sida" textFill="WHITE" />
-            <Hyperlink layoutX="898.0" layoutY="7.0" prefHeight="29.0" prefWidth="86.0" text="Köphistorik" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="6.0" layoutY="4.0" prefHeight="75.0" prefWidth="223.0" text="LOGO" textFill="WHITE">
-               <font>
-                  <Font size="47.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
-   <right>
-      <AnchorPane prefHeight="583.0" prefWidth="352.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane prefHeight="582.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <AnchorPane fx:id="cartPane" prefHeight="200.0" prefWidth="200.0">
+            <SplitPane dividerPositions="0.2979591836734694" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <ListView prefHeight="496.0" prefWidth="352.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Button layoutY="496.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="352.0" style="-fx-background-color: green;" text="BETALA" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <TextField fx:id="searchField" layoutX="65.0" layoutY="11.0" prefHeight="27.0" prefWidth="345.0" promptText="Sök..." AnchorPane.leftAnchor="65.0" />
+                        <Button fx:id="searchButton" layoutX="422.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchButtonPushed" prefHeight="27.0" prefWidth="52.0" text="Sök" />
+                        <GridPane layoutX="14.0" layoutY="50.0" prefHeight="79.0" prefWidth="559.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="fruitButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="67.0" prefWidth="174.0" text="Frukt" />
+                              <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="72.0" prefWidth="174.0" text="Mejeri" GridPane.rowIndex="1" />
+                              <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="66.0" prefWidth="173.0" text="Drycker" GridPane.columnIndex="1" />
+                              <Button fx:id="sweetButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="81.0" prefWidth="173.0" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="60.0" prefWidth="139.0" text="Kött och Fisk" GridPane.columnIndex="2" />
+                              <Button fx:id="pantryButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="40.0" prefWidth="170.0" text="Skafferi" GridPane.columnIndex="3" />
+                              <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="69.0" prefWidth="139.0" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="39.0" prefWidth="231.0" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Label layoutX="9.0" layoutY="11.0" text="iMat" AnchorPane.leftAnchor="15.0">
                            <font>
-                              <Font size="40.0" />
+                              <Font size="21.0" />
                            </font>
-                           <effect>
-                              <Blend />
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        </Label>
                      </children>
                   </AnchorPane>
-               </children>
-            </StackPane>
-         </children>
-      </AnchorPane>
-   </right>
-   <left>
-      <AnchorPane prefHeight="588.0" prefWidth="719.0" BorderPane.alignment="CENTER">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <TilePane fx:id="productPane" hgap="10.0" layoutX="79.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <GridPane fx:id="productPane" hgap="10.0" prefHeight="588.0" prefWidth="720.0" style="-fx-background-color: ragb(196,167,167); -fx-grid-lines-visible: true;" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </GridPane>
+            <SplitPane dividerPositions="0.15151515151515152" layoutX="109.0" layoutY="51.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Hyperlink layoutX="6.0" layoutY="23.0" text="Köp Historik" />
+                        <Hyperlink layoutX="98.0" layoutY="23.0" text="Konto" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <StackPane layoutX="-9.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ListView fx:id="cartView" prefHeight="361.0" prefWidth="252.0" />
+                                    <Button layoutY="362.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="252.0" text="Köp" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
          </children>
       </AnchorPane>
-   </left>
-</BorderPane>
+  </items>
+</SplitPane>
