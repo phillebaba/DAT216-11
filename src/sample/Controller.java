@@ -3,14 +3,16 @@ package sample;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
@@ -122,8 +124,11 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     void searchButtonPushed(ActionEvent event) {
-        //ArrayList<Product> filtered = (ArrayList<Product>) IMatDataHandler.getInstance().getProducts().stream().filter(p -> p.getName().contains(searchField.getCharacters()));
-        updateProducts((ArrayList<Product>) IMatDataHandler.getInstance().getProducts());
+        // Show products with names containing the search field text
+        List<Product> products = IMatDataHandler.getInstance().getProducts();
+        Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
+        List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+        updateProducts((ArrayList<Product>) filter);
     }
 
     @FXML
