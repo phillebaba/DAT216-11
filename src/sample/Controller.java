@@ -8,12 +8,15 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
 
@@ -59,7 +62,10 @@ public class Controller implements ShoppingCartListener {
     private TilePane productPane;
 
     @FXML
-    private ListView<?> cartView;
+    private ListView<ShoppingItem> cartView;
+
+    @FXML
+    private AnchorPane cartPane;
 
     @FXML
     void categoryButtonPushed(ActionEvent event) {
@@ -129,6 +135,7 @@ public class Controller implements ShoppingCartListener {
         Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
         List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
         updateProducts((ArrayList<Product>) filter);
+
     }
 
     @FXML
@@ -147,10 +154,19 @@ public class Controller implements ShoppingCartListener {
         assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
 
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
+
+        cartView.setCellFactory(cartListView -> new CartViewCell());
     }
 
-    public void shoppingCartChanged(CartEvent var1) {
+    private ObservableList<ShoppingItem> cartItemObservableList;
 
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        cartItemObservableList = FXCollections.observableArrayList();
+        // read all items from shoppingcart and add to observablelist
+        cartItemObservableList.addAll(IMatDataHandler.getInstance().getShoppingCart().getItems());
+        // add all items to shoppingcart list
+        cartView.setItems(cartItemObservableList);
+        cartView.refresh();
     }
 
     /**
@@ -164,7 +180,7 @@ public class Controller implements ShoppingCartListener {
         productPane.getChildren().clear();
 
         // Draw the new product list
-        for (Product product: productList) {
+        for (Product product : productList) {
             Button button = new Button();
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -176,5 +192,4 @@ public class Controller implements ShoppingCartListener {
             productPane.getChildren().add(button);
         }
     }
-
 }

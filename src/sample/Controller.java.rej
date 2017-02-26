@@ -1,0 +1,9 @@
+diff a/src/sample/Controller.java b/src/sample/Controller.java	(rejected hunks)
+@@ -124,7 +124,6 @@
+ 
+     @FXML
+     void searchButtonPushed(ActionEvent event) {
+-        updateProducts((ArrayList<Product>) IMatDataHandler.getInstance().getProducts());
+         // Show products with names containing the search field text
+         List<Product> products = IMatDataHandler.getInstance().getProducts();
+         Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
