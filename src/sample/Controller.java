@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -86,16 +86,21 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     void searchButtonPushed(ActionEvent event) {
-        // Show products with names containing the search field text
-        List<Product> products = IMatDataHandler.getInstance().getProducts();
-        Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
-        List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
-        updateProducts((ArrayList<Product>) filter);
+        if (searchField.getText().length() == 0) {
+            updateProducts(new ArrayList<>());
+        } else {
+            // Show products with names containing the search field text
+            List<Product> products = IMatDataHandler.getInstance().getProducts();
+            Pattern pattern = Pattern.compile("^(?i)" + searchField.getText() + "\\w*");
+            Predicate<Product> predicate = p -> pattern.matcher(p.getName()).matches();
+            List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+            updateProducts((ArrayList<Product>) filter);
+        }
     }
 
     @FXML
     void buyPushed(ActionEvent event) {
-        
+
     }
 
     @FXML
