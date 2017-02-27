@@ -1,6 +1,5 @@
 package sample;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,9 +11,7 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -71,6 +68,43 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     void categoryButtonPushed(ActionEvent event) {
+        List<ProductCategory> selectedCategories = productMap.get(event.getSource());
+        if (selectedCategories != null) {
+            ArrayList<Product> products = new ArrayList<Product>();
+
+            for (ProductCategory productCategory : selectedCategories) {
+                products.addAll(IMatDataHandler.getInstance().getProducts(productCategory));
+            }
+
+            updateProducts(products);
+        }
+    }
+
+    @FXML
+    void searchButtonPushed(ActionEvent event) {
+        // Show products with names containing the search field text
+        List<Product> products = IMatDataHandler.getInstance().getProducts();
+        Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
+        List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+        updateProducts((ArrayList<Product>) filter);
+    }
+
+    @FXML
+    void initialize() {
+        assert fruitButton != null : "fx:id=\"fruitButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert vegetableButton != null : "fx:id=\"vegetableButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert meatButton != null : "fx:id=\"produceButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert breadButton != null : "fx:id=\"breadButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert pantryButton != null : "fx:id=\"pantryButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert drinksButton != null : "fx:id=\"drinksButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert sweetButton != null : "fx:id=\"sweetButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
+        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
+        assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
+
+        // Setup product map translation from button to categories
         ArrayList<ProductCategory> fruitList = new ArrayList<ProductCategory>();
         fruitList.add(ProductCategory.BERRY);
         fruitList.add(ProductCategory.CITRUS_FRUIT);
@@ -108,64 +142,32 @@ public class Controller implements ShoppingCartListener {
         vegetableList.add(ProductCategory.CABBAGE);
         vegetableList.add(ProductCategory.ROOT_VEGETABLE);
 
-        HashMap<Button, ArrayList<ProductCategory>> hashMap = new HashMap();
-        hashMap.put(fruitButton, fruitList);
-        hashMap.put(drinksButton, drinkList);
-        hashMap.put(meatButton, meatList);
-        hashMap.put(pantryButton, pantryList);
-        hashMap.put(dairyButton, dairyList);
-        hashMap.put(sweetButton, sweetList);
-        hashMap.put(breadButton, breadList);
-        hashMap.put(vegetableButton, vegetableList);
+        productMap = new HashMap<>();
+        productMap.put(fruitButton, fruitList);
+        productMap.put(drinksButton, drinkList);
+        productMap.put(meatButton, meatList);
+        productMap.put(pantryButton, pantryList);
+        productMap.put(dairyButton, dairyList);
+        productMap.put(sweetButton, sweetList);
+        productMap.put(breadButton, breadList);
+        productMap.put(vegetableButton, vegetableList);
 
-        ArrayList<ProductCategory> selectedCategories = hashMap.get(event.getSource());
-        if (selectedCategories != null) {
-            ArrayList<Product> products = new ArrayList<Product>();
-
-            for (ProductCategory productCategory : selectedCategories) {
-                products.addAll(IMatDataHandler.getInstance().getProducts(productCategory));
-            }
-
-            updateProducts(products);
-        }
-    }
-
-    @FXML
-    void searchButtonPushed(ActionEvent event) {
-        // Show products with names containing the search field text
-        List<Product> products = IMatDataHandler.getInstance().getProducts();
-        Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
-        List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
-        updateProducts((ArrayList<Product>) filter);
-    }
-
-    @FXML
-    void initialize() {
-        assert fruitButton != null : "fx:id=\"fruitButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert vegetableButton != null : "fx:id=\"vegetableButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert meatButton != null : "fx:id=\"produceButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert breadButton != null : "fx:id=\"breadButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert pantryButton != null : "fx:id=\"pantryButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert drinksButton != null : "fx:id=\"drinksButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert sweetButton != null : "fx:id=\"sweetButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
-        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
-        assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
-
+        // Add self as observer of the shopping cart
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
 
+        // Set custom cell factory
         cartView.setCellFactory(cartListView -> new CartViewCell());
     }
 
     private ObservableList<ShoppingItem> cartItemObservableList;
+    private HashMap<Button, List<ProductCategory>> productMap;
 
     public void shoppingCartChanged(CartEvent cartEvent) {
+        // Read all items from the shopping cart and add to observable list
         cartItemObservableList = FXCollections.observableArrayList();
-        // read all items from shoppingcart and add to observablelist
         cartItemObservableList.addAll(IMatDataHandler.getInstance().getShoppingCart().getItems());
-        // add all items to shoppingcart list
+
+        // Add all items to shopping cart list
         cartView.setItems(cartItemObservableList);
         cartView.refresh();
     }
@@ -183,7 +185,6 @@ public class Controller implements ShoppingCartListener {
         // Draw the new product list
         for (Product product : productList) {
             ProductViewCell cell = new ProductViewCell();
-            cell.initialize();
             cell.updateItem(product);
             productPane.getChildren().add(cell);
         }

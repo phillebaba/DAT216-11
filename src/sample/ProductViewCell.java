@@ -3,6 +3,9 @@ package sample;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,10 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
-public class ProductViewCell extends AnchorPane {
+public class ProductViewCell extends VBox {
 
     @FXML
     private ResourceBundle resources;
@@ -72,5 +76,27 @@ public class ProductViewCell extends AnchorPane {
         nameLable.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()));
         amountField.setText("0");
+
+        subtractButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) - 1));
+            }
+        });
+
+        incrementButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) + 1));
+            }
+        });
+
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                IMatDataHandler.getInstance().getShoppingCart().addProduct(product, Double.valueOf(amountField.getText()));
+                amountField.setText("0");
+            }
+        });
     }
 }
