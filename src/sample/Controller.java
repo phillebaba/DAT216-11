@@ -1,5 +1,8 @@
 package sample;
 
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,15 +13,24 @@ import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
+
+import javax.swing.*;
+
 
 public class Controller implements ShoppingCartListener {
 
@@ -180,7 +192,7 @@ public class Controller implements ShoppingCartListener {
         productPane.getChildren().clear();
 
         // Draw the new product list
-        for (Product product : productList) {
+        /*for (Product product : productList) {
             Button button = new Button();
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -190,6 +202,54 @@ public class Controller implements ShoppingCartListener {
             });
             button.setText(product.getName());
             productPane.getChildren().add(button);
+        }*/
+        // Draw the new product list
+        for (Product product : productList) {
+            //nodes
+            Label imageLabel = new Label();
+            Label productNameLabel = new Label();
+            BorderPane productPaneTile = new BorderPane();
+            Button button = new Button();
+
+            //Dimensions
+            productPaneTile.setMinHeight(70);
+            productPaneTile.setMinWidth(40);
+            //imageLabel.setMinHeight(30);
+            //imageLabel.setMinWidth(30);
+            Dimension productImageDimension = new Dimension(267,200);
+            // Allignment
+            productPaneTile.setTop(productNameLabel);
+            productPaneTile.setBottom(button);
+            productPaneTile.setCenter(imageLabel);
+            productPaneTile.setAlignment(button, Pos.BOTTOM_CENTER);
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    IMatDataHandler.getInstance().getShoppingCart().addProduct(product);
+                }
+            });
+            // Prdoct name at top
+            productNameLabel.setText(product.getName());
+            button.setText("Add to Cart");
+            productPane.getChildren().add(productPaneTile);
+            // converting images to fx campatible type, images in backend are for swing :(
+            ImageIcon icon = IMatDataHandler.getInstance().getImageIcon(product, productImageDimension);
+            ImageView productImage = new ImageView(convertBackendImage(icon));
+            imageLabel.setGraphic(productImage);
         }
     }
+
+    private WritableImage convertBackendImage(ImageIcon icon) {
+        BufferedImage bi = new BufferedImage(
+                icon.getIconWidth(),
+                icon.getIconHeight(),
+                BufferedImage.TYPE_INT_RGB);
+        Graphics g = bi.createGraphics();
+        icon.paintIcon(null, g, 0, 0);
+        g.dispose();
+        return SwingFXUtils.toFXImage(bi, null);
+    }
+
+
 }
