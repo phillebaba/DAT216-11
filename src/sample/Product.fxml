@@ -4,25 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefHeight="235.0" prefWidth="186.0" style="-fx-background-color: green;" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="175.0" style="-fx-background-color: green;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="imageView" fitHeight="128.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox prefHeight="100.0" prefWidth="187.0">
-         <children>
-            <Label fx:id="nameLable" />
-            <Label fx:id="priceLabel" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="175.0">
-         <children>
-            <Button fx:id="subtractButton" mnemonicParsing="false" text="-" />
-            <TextField fx:id="amountField" alignment="CENTER" prefHeight="27.0" prefWidth="39.0" />
-            <Button fx:id="incrementButton" mnemonicParsing="false" text="+" />
-         </children>
-      </HBox>
-      <Button fx:id="addButton" mnemonicParsing="false" text="Lägg Till" />
+      <ImageView fx:id="imageView" fitHeight="128.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <TextField fx:id="amountField" alignment="CENTER" layoutX="68.0" layoutY="154.0" prefHeight="27.0" prefWidth="39.0" />
+      <Button fx:id="subtractButton" layoutX="43.0" layoutY="154.0" mnemonicParsing="false" text="-" />
+      <Button fx:id="incrementButton" layoutX="107.0" layoutY="154.0" mnemonicParsing="false" text="+" />
+      <Button fx:id="addButton" layoutX="52.0" layoutY="181.0" mnemonicParsing="false" text="Lägg Till" />
+      <Label fx:id="nameLable" layoutX="14.0" layoutY="128.0" />
+      <Label fx:id="priceLabel" layoutX="133.0" layoutY="128.0" />
    </children>
 </fx:root>

@@ -12,10 +12,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
 
@@ -61,10 +62,13 @@ public class Controller implements ShoppingCartListener {
     private TilePane productPane;
 
     @FXML
+    private StackPane rightPane;
+
+    @FXML
     private ListView<ShoppingItem> cartView;
 
     @FXML
-    private AnchorPane cartPane;
+    private Button buyButton;
 
     @FXML
     void categoryButtonPushed(ActionEvent event) {
@@ -87,6 +91,11 @@ public class Controller implements ShoppingCartListener {
         Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
         List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
         updateProducts((ArrayList<Product>) filter);
+    }
+
+    @FXML
+    void buyPushed(ActionEvent event) {
+        
     }
 
     @FXML

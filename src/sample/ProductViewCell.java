@@ -13,11 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
-public class ProductViewCell extends VBox {
+public class ProductViewCell extends AnchorPane {
 
     @FXML
     private ResourceBundle resources;
