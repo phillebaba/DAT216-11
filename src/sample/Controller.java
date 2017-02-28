@@ -1,35 +1,24 @@
 package sample;
 
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.*;
 import se.chalmers.ait.dat215.project.*;
-
-import javax.swing.*;
 
 
 public class Controller implements ShoppingCartListener {
@@ -41,19 +30,16 @@ public class Controller implements ShoppingCartListener {
     private URL location;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
     private Button fruitButton;
 
     @FXML
-    private Button vegetableButton;
-
-    @FXML
-    private Button meatButton;
-
-    @FXML
-    private Button breadButton;
-
-    @FXML
-    private Button pantryButton;
+    private Button dairyButton;
 
     @FXML
     private Button drinksButton;
@@ -62,25 +48,167 @@ public class Controller implements ShoppingCartListener {
     private Button sweetButton;
 
     @FXML
-    private Button dairyButton;
+    private Button meatButton;
 
     @FXML
-    private TextField searchField;
+    private Button pantryButton;
 
     @FXML
-    private Button searchButton;
+    private Button breadButton;
+
+    @FXML
+    private Button vegetableButton;
 
     @FXML
     private TilePane productPane;
 
     @FXML
+    private StackPane rightPane;
+
+    @FXML
+    private VBox cartViewHBox;
+
+    @FXML
     private ListView<ShoppingItem> cartView;
 
     @FXML
-    private AnchorPane cartPane;
+    private Button buyButton;
+
+    @FXML
+    private AnchorPane infoView;
+
+    @FXML
+    private TextField customerFirstNameField;
+
+    @FXML
+    private TextField customerLastNameField;
+
+    @FXML
+    private TextField customerPostCodeField;
+
+    @FXML
+    private TextField customerAdressField;
+
+    @FXML
+    private TextField customerEmailField;
+
+    @FXML
+    private TextField customerPhonenumberField;
+
+    @FXML
+    private TextField cardNumberField;
+
+    @FXML
+    private TextField cardCVCField;
+
+    @FXML
+    private TextField cardMonthField;
+
+    @FXML
+    private TextField cardYearField;
+
+    @FXML
+    private Button backToCartButton;
+
+    @FXML
+    private Button toConfirmationViewButton;
+
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button backToInfoButton;
+    @FXML
+    private Button confirmationButton;
+    @FXML
+    private AnchorPane confirmationView;
+
+    @FXML
+    void saveButtonPressed(ActionEvent evt) {
+      /*  IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
+        IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
+        IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
+        IMatDataHandler.getInstance().getCustomer().setAddress(customerAdressField.getText());
+        IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
+        IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
+        IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
+        IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
+        IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        *///todo need to get cardtype
+        //todo need to check if numbers before reading some fields
+    }
+
+    @FXML
+    void buyPushed(ActionEvent event) {
+        cartViewHBox.setVisible(false);
+        infoView.setVisible(true);
+    }
+    @FXML
+    void toConfirmationViewButtonPushed(ActionEvent event) {
+        cartViewHBox.setVisible(false);
+        infoView.setVisible(false);
+        confirmationView.setVisible(true);
+    }
+    @FXML
+    void confirmationButtonPushed(ActionEvent event) {
+       //todo do stuff
+    }
+    @FXML
+    void backToInfoButtonPushed(ActionEvent event) {
+        infoView.setVisible(true);
+        confirmationView.setVisible(false);
+    }
+    @FXML
+    void backToCartButtonPushed(ActionEvent event) {
+        cartViewHBox.setVisible(true);
+        infoView.setVisible(false);
+    }
 
     @FXML
     void categoryButtonPushed(ActionEvent event) {
+        List<ProductCategory> selectedCategories = productMap.get(event.getSource());
+        if (selectedCategories != null) {
+            ArrayList<Product> products = new ArrayList<Product>();
+
+            for (ProductCategory productCategory : selectedCategories) {
+                products.addAll(IMatDataHandler.getInstance().getProducts(productCategory));
+            }
+
+            updateProducts(products);
+        }
+    }
+
+    @FXML
+    void searchButtonPushed(ActionEvent event) {
+        if (searchField.getText().length() == 0) {
+            updateProducts(new ArrayList<>());
+        } else {
+            // Show products with names containing the search field text
+            List<Product> products = IMatDataHandler.getInstance().getProducts();
+            Pattern pattern = Pattern.compile("^(?i)" + searchField.getText() + "\\w*");
+            Predicate<Product> predicate = p -> pattern.matcher(p.getName()).matches();
+            List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+            updateProducts((ArrayList<Product>) filter);
+        }
+
+    }
+
+    @FXML
+    void initialize() {
+        assert fruitButton != null : "fx:id=\"fruitButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert vegetableButton != null : "fx:id=\"vegetableButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert meatButton != null : "fx:id=\"produceButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert breadButton != null : "fx:id=\"breadButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert pantryButton != null : "fx:id=\"pantryButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert drinksButton != null : "fx:id=\"drinksButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert sweetButton != null : "fx:id=\"sweetButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
+        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
+        assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
+        assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
+
+        // Setup product map translation from button to categories
         ArrayList<ProductCategory> fruitList = new ArrayList<ProductCategory>();
         fruitList.add(ProductCategory.BERRY);
         fruitList.add(ProductCategory.CITRUS_FRUIT);
@@ -118,65 +246,32 @@ public class Controller implements ShoppingCartListener {
         vegetableList.add(ProductCategory.CABBAGE);
         vegetableList.add(ProductCategory.ROOT_VEGETABLE);
 
-        HashMap<Button, ArrayList<ProductCategory>> hashMap = new HashMap();
-        hashMap.put(fruitButton, fruitList);
-        hashMap.put(drinksButton, drinkList);
-        hashMap.put(meatButton, meatList);
-        hashMap.put(pantryButton, pantryList);
-        hashMap.put(dairyButton, dairyList);
-        hashMap.put(sweetButton, sweetList);
-        hashMap.put(breadButton, breadList);
-        hashMap.put(vegetableButton, vegetableList);
+        productMap = new HashMap<>();
+        productMap.put(fruitButton, fruitList);
+        productMap.put(drinksButton, drinkList);
+        productMap.put(meatButton, meatList);
+        productMap.put(pantryButton, pantryList);
+        productMap.put(dairyButton, dairyList);
+        productMap.put(sweetButton, sweetList);
+        productMap.put(breadButton, breadList);
+        productMap.put(vegetableButton, vegetableList);
 
-        ArrayList<ProductCategory> selectedCategories = hashMap.get(event.getSource());
-        if (selectedCategories != null) {
-            ArrayList<Product> products = new ArrayList<Product>();
-
-            for (ProductCategory productCategory : selectedCategories) {
-                products.addAll(IMatDataHandler.getInstance().getProducts(productCategory));
-            }
-
-            updateProducts(products);
-        }
-    }
-
-    @FXML
-    void searchButtonPushed(ActionEvent event) {
-        // Show products with names containing the search field text
-        List<Product> products = IMatDataHandler.getInstance().getProducts();
-        Predicate<Product> predicate = p -> p.getName().toLowerCase().contains(searchField.getText().toLowerCase());
-        List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
-        updateProducts((ArrayList<Product>) filter);
-
-    }
-
-    @FXML
-    void initialize() {
-        assert fruitButton != null : "fx:id=\"fruitButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert vegetableButton != null : "fx:id=\"vegetableButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert meatButton != null : "fx:id=\"produceButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert breadButton != null : "fx:id=\"breadButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert pantryButton != null : "fx:id=\"pantryButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert drinksButton != null : "fx:id=\"drinksButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert sweetButton != null : "fx:id=\"sweetButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
-        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
-        assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
-
+        // Add self as observer of the shopping cart
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
 
+        // Set custom cell factory
         cartView.setCellFactory(cartListView -> new CartViewCell());
     }
 
     private ObservableList<ShoppingItem> cartItemObservableList;
+    private HashMap<Button, List<ProductCategory>> productMap;
 
     public void shoppingCartChanged(CartEvent cartEvent) {
+        // Read all items from the shopping cart and add to observable list
         cartItemObservableList = FXCollections.observableArrayList();
-        // read all items from shoppingcart and add to observablelist
         cartItemObservableList.addAll(IMatDataHandler.getInstance().getShoppingCart().getItems());
-        // add all items to shoppingcart list
+
+        // Add all items to shopping cart list
         cartView.setItems(cartItemObservableList);
         cartView.refresh();
     }
@@ -191,65 +286,10 @@ public class Controller implements ShoppingCartListener {
         // Empty all of the existing items
         productPane.getChildren().clear();
 
-        // Draw the new product list
-        /*for (Product product : productList) {
-            Button button = new Button();
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    IMatDataHandler.getInstance().getShoppingCart().addProduct(product);
-                }
-            });
-            button.setText(product.getName());
-            productPane.getChildren().add(button);
-        }*/
-        // Draw the new product list
         for (Product product : productList) {
-            //nodes
-            Label imageLabel = new Label();
-            Label productNameLabel = new Label();
-            BorderPane productPaneTile = new BorderPane();
-            Button button = new Button();
-
-            //Dimensions
-            productPaneTile.setMinHeight(70);
-            productPaneTile.setMinWidth(40);
-            //imageLabel.setMinHeight(30);
-            //imageLabel.setMinWidth(30);
-            Dimension productImageDimension = new Dimension(267,200);
-            // Allignment
-            productPaneTile.setTop(productNameLabel);
-            productPaneTile.setBottom(button);
-            productPaneTile.setCenter(imageLabel);
-            productPaneTile.setAlignment(button, Pos.BOTTOM_CENTER);
-
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    IMatDataHandler.getInstance().getShoppingCart().addProduct(product);
-                }
-            });
-            // Prdoct name at top
-            productNameLabel.setText(product.getName());
-            button.setText("Add to Cart");
-            productPane.getChildren().add(productPaneTile);
-            // converting images to fx campatible type, images in backend are for swing :(
-            ImageIcon icon = IMatDataHandler.getInstance().getImageIcon(product, productImageDimension);
-            ImageView productImage = new ImageView(convertBackendImage(icon));
-            imageLabel.setGraphic(productImage);
+            ProductViewCell cell = new ProductViewCell();
+            cell.updateItem(product);
+            productPane.getChildren().add(cell);
         }
     }
-
-    private WritableImage convertBackendImage(ImageIcon icon) {
-        BufferedImage bi = new BufferedImage(
-                icon.getIconWidth(),
-                icon.getIconHeight(),
-                BufferedImage.TYPE_INT_RGB);
-        Graphics g = bi.createGraphics();
-        icon.paintIcon(null, g, 0, 0);
-        g.dispose();
-        return SwingFXUtils.toFXImage(bi, null);
-    }
-
-
 }
