@@ -72,7 +72,7 @@ public class Controller implements ShoppingCartListener {
     private VBox cartViewHBox;
 
     @FXML
-    private ListView<ShoppingItem> cartView;
+    private ListView<ShoppingItem> cartListView;
 
     @FXML
     private Button buyButton;
@@ -138,6 +138,10 @@ public class Controller implements ShoppingCartListener {
     private ProgressBar shoppingProgressBar;
     @FXML
     private Label cartTotalPriceConfirmationLabel;
+    @FXML
+    private ListView shoppingHistoryListView;
+    @FXML
+    private AnchorPane orderPlacedView;
 
     @FXML
     void cardMastercardRadioButtonToggled() {
@@ -174,17 +178,18 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     void buyPushed(ActionEvent event) {
-        cartViewHBox.setVisible(false);
-        infoView.setVisible(true);
+        setRightHandView(infoView);
         shoppingProgressBar.setProgress(0.33);
     }
 
     @FXML
     void toConfirmationViewButtonPushed(ActionEvent event) {
-        infoView.setVisible(false);
-        confirmationView.setVisible(true);
+        // Go to confirmationview
+        setRightHandView(confirmationView);
+        // set lists with payment details and shoppingcart for review before purchase
         setPaymentConfirmationListView();
         setCartConfirmationListView();
+
         shoppingProgressBar.setProgress(0.66);
         cartTotalPriceConfirmationLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " Kr");
     }
@@ -192,19 +197,26 @@ public class Controller implements ShoppingCartListener {
     @FXML
     void confirmationButtonPushed(ActionEvent event) {
         shoppingProgressBar.setProgress(1);
+        IMatDataHandler.getInstance().placeOrder(true);
+        setRightHandView(orderPlacedView);
+
+        ObservableList<String> orders = FXCollections.observableArrayList();
+        for(Order o: IMatDataHandler.getInstance().getOrders()) {
+        orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
+        }
+        shoppingHistoryListView.setItems(orders);
+
     }
 
     @FXML
     void backToInfoButtonPushed(ActionEvent event) {
-        infoView.setVisible(true);
-        confirmationView.setVisible(false);
+        setRightHandView(infoView);
         shoppingProgressBar.setProgress(0.33);
     }
 
     @FXML
     void backToCartButtonPushed(ActionEvent event) {
-        cartViewHBox.setVisible(true);
-        infoView.setVisible(false);
+        setRightHandView(cartViewHBox);
         shoppingProgressBar.setProgress(0);
     }
 
@@ -250,7 +262,7 @@ public class Controller implements ShoppingCartListener {
         assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
         assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
         assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
-        assert cartView != null : "fx:id=\"cartView\" was not injected: check your FXML file 'sample.fxml'.";
+        assert cartListView != null : "fx:id=\"cartListView\" was not injected: check your FXML file 'sample.fxml'.";
 
         // Setup product map translation from button to categories
         ArrayList<ProductCategory> fruitList = new ArrayList<ProductCategory>();
@@ -304,7 +316,7 @@ public class Controller implements ShoppingCartListener {
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
 
         // Set custom cell factory
-        cartView.setCellFactory(cartListView -> new CartViewCell());
+        cartListView.setCellFactory(cartListView -> new CartViewCell());
     }
 
     private ObservableList<ShoppingItem> cartItemObservableList;
@@ -316,8 +328,21 @@ public class Controller implements ShoppingCartListener {
         cartItemObservableList.addAll(IMatDataHandler.getInstance().getShoppingCart().getItems());
 
         // Add all items to shopping cart list
-        cartView.setItems(cartItemObservableList);
-        cartView.refresh();
+        cartListView.setItems(cartItemObservableList);
+        cartListView.refresh();
+        if (cartEvent.isAddEvent()) {
+            setRightHandView(cartViewHBox);
+            System.out.println("haaaaaaaaaalp");
+        }
+    }
+
+    //must be one of the views from the payment process
+    void setRightHandView(Pane p) {
+        cartViewHBox.setVisible(false);
+        infoView.setVisible(false);
+        confirmationView.setVisible(false);
+        orderPlacedView.setVisible(false);
+        p.setVisible(true);
     }
 
     /**
@@ -342,8 +367,8 @@ public class Controller implements ShoppingCartListener {
         ObservableList<String> oLPrices = FXCollections.observableArrayList();
 
         for (ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
-    oLNames.add(sI.getProduct().getName());
-    oLPrices.add(sI.getTotal() + " Kr");
+            oLNames.add(sI.getProduct().getName());
+            oLPrices.add(sI.getTotal() + " Kr");
         }
         cartConfirmationListView.setItems(oLNames);
         cartPriceConfirmationListView.setItems(oLPrices);

@@ -58,7 +58,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
             }
             setListeners();
             setProductName(cartItem.getProduct().getName());
-            setAmountField(cartItem.getAmount() + "");
+            setAmountField(cartItem.getAmount());
             setProductPrice();
             setGraphic(this.rootPane);
         }
@@ -100,12 +100,16 @@ public class CartViewCell extends ListCell<ShoppingItem> {
 
     private void setProductName(String string) {
         productNameLabel.setText(string);
-        IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, true); // todo need to check if increase
+
     }
 
-    private void setAmountField(String string) {
-        amountField.setText(string);
-    }
+    private void setAmountField(double d) {
+        String s = cartItem.getProduct().getUnitSuffix();
+        if(s.equals("st") || s.equals("förp")){
+            amountField.setText((int)d + "");
+        }else{
+        amountField.setText(d + "");
+    }}
 
     private void incrementProductAmount() {
         cartItem.setAmount(cartItem.getAmount() + 1);
@@ -115,6 +119,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
     private void setProductAmount() {
         if (isNumeric(amountField.getText())) {
             cartItem.setAmount(Integer.parseInt(amountField.getText()));
+            IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, false); // todo need to check if increase
         }
     }
 

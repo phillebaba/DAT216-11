@@ -19,13 +19,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.693359375" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<SplitPane dividerPositions="0.6389684813753582" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <SplitPane dividerPositions="0.2979591836734694" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.2349799732977303" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0">
                      <children>
                         <TextField fx:id="searchField" layoutX="65.0" layoutY="11.0" prefHeight="27.0" prefWidth="345.0" promptText="Sök..." AnchorPane.leftAnchor="65.0" />
                         <Button fx:id="searchButton" layoutX="422.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchButtonPushed" prefHeight="27.0" prefWidth="52.0" text="Sök" />
@@ -45,9 +45,9 @@
                               <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="72.0" prefWidth="174.0" text="Mejeri" GridPane.rowIndex="1" />
                               <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="66.0" prefWidth="173.0" text="Drycker" GridPane.columnIndex="1" />
                               <Button fx:id="sweetButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="81.0" prefWidth="173.0" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="60.0" prefWidth="139.0" text="Kött och Fisk" GridPane.columnIndex="2" />
+                              <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="40.0" prefWidth="152.0" text="Kött och Fisk" GridPane.columnIndex="2" />
                               <Button fx:id="pantryButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="40.0" prefWidth="170.0" text="Skafferi" GridPane.columnIndex="3" />
-                              <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="69.0" prefWidth="139.0" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="39.0" prefWidth="155.0" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="39.0" prefWidth="231.0" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
@@ -60,7 +60,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="517.0" prefWidth="663.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
                               <TilePane fx:id="productPane" hgap="10.0" prefColumns="3" vgap="10.0">
                                  <padding>
@@ -74,13 +74,13 @@
               </items>
             </SplitPane>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane maxWidth="400.0" minHeight="0.0" minWidth="400.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <SplitPane dividerPositions="0.2064343163538874" layoutX="109.0" layoutY="51.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.1321762349799733" layoutX="109.0" layoutY="51.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                  <AnchorPane prefHeight="75.0" prefWidth="332.0">
+                  <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0">
                      <children>
-                        <HBox prefHeight="70.0" prefWidth="312.0">
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="372.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="216.0" text="Historik" />
                               <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="219.0" text="Konto" />
@@ -103,15 +103,15 @@
                                     <AnchorPane prefHeight="27.0" prefWidth="332.0">
                                        <children>
                                           <Label layoutX="-12.0" layoutY="5.0" prefHeight="33.0" prefWidth="68.0" text="Namn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                          <Label alignment="CENTER" layoutX="166.0" layoutY="6.0" prefHeight="38.0" prefWidth="42.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="0.0" />
-                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" prefHeight="50.0" prefWidth="27.0" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="0.0" />
+                                          <Label alignment="CENTER" layoutX="166.0" layoutY="6.0" prefHeight="38.0" prefWidth="42.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" prefHeight="50.0" prefWidth="27.0" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
-                                    <ListView fx:id="cartView" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
+                                    <ListView fx:id="cartListView" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
                                     <Button fx:id="buyButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" text="KASSA" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0">
+                              <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0" visible="false">
                                  <children>
                                     <ListView fx:id="cartConfirmationListView" layoutY="50.0" prefHeight="251.0" prefWidth="237.0" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="50.0" />
                                     <Label layoutY="-4.0" prefHeight="54.0" prefWidth="332.0" text="Kundvagn:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -126,14 +126,14 @@
                                     </Label>
                                     <Button fx:id="confirmButton" layoutX="89.0" layoutY="559.0" mnemonicParsing="false" onAction="#confirmationButtonPushed" prefHeight="70.0" prefWidth="243.0" text="Bekräfta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" />
                                     <Button fx:id="backToInfoButton" layoutY="559.0" mnemonicParsing="false" onAction="#backToInfoButtonPushed" prefHeight="70.0" prefWidth="93.0" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
-                                    <ListView fx:id="paymentConfirmationListView" layoutY="423.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                    <ListView fx:id="paymentConfirmationListView" layoutY="377.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                     <ListView fx:id="cartPriceConfirmationListView" layoutX="245.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="78.0" AnchorPane.bottomAnchor="289.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-                                    <Label layoutY="299.0" prefHeight="21.0" prefWidth="154.0" text="Totalbelopp:" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="0.0">
+                                    <Label contentDisplay="RIGHT" layoutY="299.0" prefHeight="21.0" prefWidth="154.0" text="Totalbelopp:" textAlignment="RIGHT" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="0.0">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="cartTotalPriceConfirmationLabel" layoutX="250.0" layoutY="299.0" prefHeight="39.0" prefWidth="78.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="299.0" />
+                                    <Label fx:id="cartTotalPriceConfirmationLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="320.0" layoutY="355.0" prefHeight="30.0" prefWidth="68.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="7.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="infoView" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -204,6 +204,21 @@
                               </AnchorPane>
                            </children>
                         </StackPane>
+                        <AnchorPane fx:id="orderPlacedView" prefHeight="647.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="54.0" prefWidth="367.0" text="Tack för ditt köp!" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <ListView fx:id="shoppingHistoryListView" layoutY="129.0" prefHeight="517.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="129.0" />
+                              <Label layoutY="98.0" prefHeight="0.0" prefWidth="207.0" text="Köphistorik:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="98.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
               </items>
