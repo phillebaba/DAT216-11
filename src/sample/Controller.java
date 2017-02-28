@@ -14,9 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -121,47 +119,88 @@ public class Controller implements ShoppingCartListener {
     private Button confirmationButton;
     @FXML
     private AnchorPane confirmationView;
+    @FXML
+    private RadioButton cardMastercardRadioButton;
+    @FXML
+    private ListView cartConfirmationListView;
+    @FXML
+    private ListView cartPriceConfirmationListView;
+    @FXML
+    private ListView<String> paymentConfirmationListView;
+    @FXML
+    private RadioButton cardVisaRadioButton;
+    @FXML
+    private ProgressBar shoppingProgressBar;
+    @FXML
+    private Label cartTotalPriceConfirmationLabel;
+
+    @FXML
+    void cardMastercardRadioButtonToggled() {
+        cardVisaRadioButton.setSelected(false);
+    }
+
+    @FXML
+    void cardVisaRadioButtonToggled() {
+        cardMastercardRadioButton.setSelected(false);
+    }
 
     @FXML
     void saveButtonPressed(ActionEvent evt) {
-      /*  IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
+        //Save customer
+        IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
         IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
         IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
         IMatDataHandler.getInstance().getCustomer().setAddress(customerAdressField.getText());
         IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
         IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
+        //Save billing info
+        IMatDataHandler.getInstance().getCreditCard().setHoldersName(customerFirstNameField.getText() + " " + customerLastNameField.getText());
         IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
         IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
         IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
-        IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
-        *///todo need to get cardtype
-        //todo need to check if numbers before reading some fields
+        IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(cardYearField.getText()));
+        if (cardVisaRadioButton.isSelected()) {
+            IMatDataHandler.getInstance().getCreditCard().setCardType(cardVisaRadioButton.getText());
+        } else if (cardMastercardRadioButton.isSelected()) {
+            IMatDataHandler.getInstance().getCreditCard().setCardType(cardMastercardRadioButton.getText());
+        }
+        //todo need to check if numbers before reading some fields OR maybe combobox
     }
 
     @FXML
     void buyPushed(ActionEvent event) {
         cartViewHBox.setVisible(false);
         infoView.setVisible(true);
+        shoppingProgressBar.setProgress(0.33);
     }
+
     @FXML
     void toConfirmationViewButtonPushed(ActionEvent event) {
-        cartViewHBox.setVisible(false);
         infoView.setVisible(false);
         confirmationView.setVisible(true);
+        setPaymentConfirmationListView();
+        setCartConfirmationListView();
+        shoppingProgressBar.setProgress(0.66);
+        cartTotalPriceConfirmationLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " Kr");
     }
+
     @FXML
     void confirmationButtonPushed(ActionEvent event) {
-       //todo do stuff
+        shoppingProgressBar.setProgress(1);
     }
+
     @FXML
     void backToInfoButtonPushed(ActionEvent event) {
         infoView.setVisible(true);
         confirmationView.setVisible(false);
+        shoppingProgressBar.setProgress(0.33);
     }
+
     @FXML
     void backToCartButtonPushed(ActionEvent event) {
         cartViewHBox.setVisible(true);
         infoView.setVisible(false);
+        shoppingProgressBar.setProgress(0);
     }
 
     @FXML
@@ -291,5 +330,30 @@ public class Controller implements ShoppingCartListener {
             cell.updateItem(product);
             productPane.getChildren().add(cell);
         }
+    }
+
+    private void setCartConfirmationListView() {
+        ObservableList<String> oLNames = FXCollections.observableArrayList();
+        ObservableList<String> oLPrices = FXCollections.observableArrayList();
+
+        for (ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
+    oLNames.add(sI.getProduct().getName());
+    oLPrices.add(sI.getTotal() + " Kr");
+        }
+        cartConfirmationListView.setItems(oLNames);
+        cartPriceConfirmationListView.setItems(oLPrices);
+    }
+
+    private void setPaymentConfirmationListView() {
+        ObservableList<String> oL = FXCollections.observableArrayList();
+        oL.add(customerFirstNameField.getText() + " " + customerLastNameField.getText());
+        if (cardVisaRadioButton.isSelected()) {
+            oL.add(cardVisaRadioButton.getText() + " " + cardNumberField.getText());
+        } else if (cardMastercardRadioButton.isSelected()) {
+            oL.add(cardVisaRadioButton.getText() + " " + cardNumberField.getText());
+        }
+        oL.add(customerAdressField.getText());
+        paymentConfirmationListView.setItems(oL);
+        // paymentConfirmationListView.refresh();
     }
 }

@@ -4,19 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" prefHeight="33.0" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="346.0">
-         <children>
-            <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="160.0" />
-            <Button fx:id="incrementButton" mnemonicParsing="false" prefHeight="78.0" prefWidth="34.0" text="+" />
-            <TextField fx:id="amountField" prefHeight="77.0" prefWidth="40.0" />
-            <Button fx:id="decimateButton" layoutX="257.0" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="33.0" text="-" />
-            <Label prefHeight="44.0" prefWidth="46.0" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="61.0" prefWidth="37.0" text="X" />
-         </children>
-      </HBox>
+      <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="91.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="incrementButton" layoutX="100.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" text="+" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="0.0" />
+      <TextField fx:id="amountField" layoutX="133.0" prefHeight="33.0" prefWidth="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="decimateButton" layoutX="172.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" text="-" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="cancelButton" layoutX="309.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="40.0" text="X" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="priceLabel" layoutX="288.0" layoutY="-1.0" prefHeight="33.0" prefWidth="37.0" AnchorPane.rightAnchor="37.0" />
    </children>
 </AnchorPane>

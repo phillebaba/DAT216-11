@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import se.chalmers.ait.dat215.project.*;
 
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class CartViewCell extends ListCell<ShoppingItem> {
     @FXML
     private Label productNameLabel;
     @FXML
+    private Label priceLabel;
+    @FXML
     private Button cancelButton;
     @FXML
     private Button incrementButton;
@@ -27,6 +30,12 @@ public class CartViewCell extends ListCell<ShoppingItem> {
     private Button decimateButton;
     @FXML
     private TextField amountField;
+    @FXML
+    private HBox infoPane;
+    @FXML
+    private HBox cartViewHBox;
+
+
 
     private FXMLLoader mLLoader;
 
@@ -50,6 +59,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
             setListeners();
             setProductName(cartItem.getProduct().getName());
             setAmountField(cartItem.getAmount() + "");
+            setProductPrice();
             setGraphic(this.rootPane);
         }
     }
@@ -76,7 +86,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
         amountField.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               setProductAmount();
+                setProductAmount();
             }
         });
     }
@@ -101,10 +111,15 @@ public class CartViewCell extends ListCell<ShoppingItem> {
         cartItem.setAmount(cartItem.getAmount() + 1);
         IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, true);
     }
+
     private void setProductAmount() {
         if (isNumeric(amountField.getText())) {
             cartItem.setAmount(Integer.parseInt(amountField.getText()));
         }
+    }
+
+    private void setProductPrice() {
+        priceLabel.setText(cartItem.getTotal() + "");
     }
 
     private void decimateProductAmount() {
