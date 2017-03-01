@@ -99,11 +99,14 @@
                                        <font>
                                           <Font size="20.0" />
                                        </font>
+                                       <padding>
+                                          <Insets left="8.0" />
+                                       </padding>
                                     </Label>
                                     <AnchorPane prefHeight="27.0" prefWidth="332.0">
                                        <children>
-                                          <Label layoutX="-12.0" layoutY="5.0" prefHeight="33.0" prefWidth="68.0" text="Namn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                          <Label alignment="CENTER" layoutX="166.0" layoutY="6.0" prefHeight="38.0" prefWidth="42.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0" />
+                                          <Label layoutX="-12.0" layoutY="5.0" prefHeight="33.0" prefWidth="68.0" text="Namn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0" />
+                                          <Label alignment="CENTER" layoutX="166.0" layoutY="6.0" prefHeight="38.0" prefWidth="42.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="0.0" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" prefHeight="50.0" prefWidth="27.0" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>

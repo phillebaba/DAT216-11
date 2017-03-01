@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 public class ProductViewCell extends AnchorPane {
 
@@ -74,8 +75,8 @@ public class ProductViewCell extends AnchorPane {
         Image image = new Image("file:" + System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName());
         imageView.setImage(image);
         nameLable.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()));
-        amountField.setText("0");
+        priceLabel.setText(String.valueOf(product.getPrice()) + " KR");
+        amountField.setText("1.0");
 
         subtractButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -94,8 +95,14 @@ public class ProductViewCell extends AnchorPane {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                for(ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()){
+                    if(sI.getProduct().equals(product)){
+                        IMatDataHandler.getInstance().getShoppingCart().removeItem(sI);
+                        break;
+                    }
+                }
                 IMatDataHandler.getInstance().getShoppingCart().addProduct(product, Double.valueOf(amountField.getText()));
-                amountField.setText("0");
+                amountField.setText("1.0");
             }
         });
     }

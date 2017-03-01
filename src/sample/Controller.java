@@ -201,7 +201,7 @@ public class Controller implements ShoppingCartListener {
         setCartConfirmationListView();
 
         shoppingProgressBar.setProgress(0.66);
-        cartTotalPriceConfirmationLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " Kr");
+        cartTotalPriceConfirmationLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " KR");
     }
 
     @FXML
@@ -433,7 +433,7 @@ public class Controller implements ShoppingCartListener {
 
         for (ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
             oLNames.add(sI.getProduct().getName());
-            oLPrices.add(sI.getTotal() + " Kr");
+            oLPrices.add(sI.getTotal() + " KR");
         }
         cartConfirmationListView.setItems(oLNames);
         cartPriceConfirmationListView.setItems(oLPrices);
