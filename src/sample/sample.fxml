@@ -27,7 +27,7 @@
               <items>
                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0">
                      <children>
-                        <TextField fx:id="searchField" layoutX="65.0" layoutY="11.0" prefHeight="27.0" prefWidth="345.0" promptText="Sök..." AnchorPane.leftAnchor="65.0" />
+                        <TextField fx:id="searchField" layoutX="65.0" layoutY="11.0" onAction="#searchButtonPushed" prefHeight="27.0" prefWidth="345.0" promptText="Sök..." AnchorPane.leftAnchor="65.0" />
                         <Button fx:id="searchButton" layoutX="422.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchButtonPushed" prefHeight="27.0" prefWidth="52.0" text="Sök" />
                         <GridPane layoutX="14.0" layoutY="50.0" prefHeight="79.0" prefWidth="559.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
                           <columnConstraints>
@@ -93,7 +93,7 @@
                      <children>
                         <StackPane fx:id="rightPane" layoutX="-9.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox fx:id="cartViewHBox" prefHeight="683.0" prefWidth="332.0" visible="false">
+                              <VBox fx:id="cartViewHBox" prefHeight="683.0" prefWidth="332.0">
                                  <children>
                                     <Label prefHeight="69.0" prefWidth="332.0" text="MIN KUNDVAGN">
                                        <font>
@@ -108,7 +108,7 @@
                                        </children>
                                     </AnchorPane>
                                     <ListView fx:id="cartListView" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
-                                    <Button fx:id="buyButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" text="KASSA" VBox.vgrow="ALWAYS" />
+                                    <Button fx:id="buyOrEditButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" text="KASSA" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                               <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0" visible="false">
@@ -138,27 +138,27 @@
                               </AnchorPane>
                               <AnchorPane fx:id="infoView" prefHeight="200.0" prefWidth="200.0" visible="false">
                                  <children>
-                                    <TextField fx:id="customerFirstNameField" layoutX="8.0" layoutY="88.0" prefHeight="31.0" prefWidth="154.0" promptText="Förnamn" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="88.0">
+                                    <TextField fx:id="customerFirstNameField" layoutX="8.0" layoutY="77.0" prefHeight="31.0" prefWidth="154.0" promptText="Förnamn" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="77.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="customerLastNameField" layoutX="170.0" layoutY="88.0" prefHeight="31.0" prefWidth="162.0" promptText="Efternamn" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="88.0">
+                                    <TextField fx:id="customerLastNameField" layoutX="170.0" layoutY="77.0" prefHeight="31.0" prefWidth="162.0" promptText="Efternamn" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="77.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="customerPostCodeField" layoutX="8.0" layoutY="229.0" prefHeight="31.0" prefWidth="154.0" promptText="Postnummer" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="229.0">
+                                    <TextField fx:id="customerPostCodeField" layoutX="8.0" layoutY="218.0" prefHeight="31.0" prefWidth="154.0" promptText="Postnummer" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="218.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="customerAdressField" layoutX="8.0" layoutY="135.0" prefHeight="31.0" prefWidth="324.0" promptText="Adress" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="135.0">
+                                    <TextField fx:id="customerAdressField" layoutX="8.0" layoutY="124.0" prefHeight="31.0" prefWidth="324.0" promptText="Adress" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="124.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="customerEmailField" layoutX="8.0" layoutY="182.0" prefHeight="38.0" prefWidth="324.0" promptText="Epostadress" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="182.0">
+                                    <TextField fx:id="customerEmailField" layoutX="8.0" layoutY="171.0" prefHeight="38.0" prefWidth="324.0" promptText="Epostadress" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="171.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="customerPhonenumberField" layoutX="170.0" layoutY="229.0" prefHeight="38.0" prefWidth="162.0" promptText="Telefonnummer" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="229.0">
+                                    <TextField fx:id="customerPhonenumberField" layoutX="170.0" layoutY="218.0" prefHeight="38.0" prefWidth="162.0" promptText="Telefonnummer" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="218.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
@@ -167,44 +167,49 @@
                                           <Font size="37.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="8.0" layoutY="395.0" prefHeight="31.0" prefWidth="112.0" text="Kortnummer:" AnchorPane.leftAnchor="8.0" />
-                                    <TextField fx:id="cardNumberField" layoutX="8.0" layoutY="426.0" prefHeight="31.0" prefWidth="316.0" AnchorPane.leftAnchor="8.0">
+                                    <Label layoutX="8.0" layoutY="410.0" prefHeight="31.0" prefWidth="112.0" text="Kortnummer:" AnchorPane.leftAnchor="8.0" />
+                                    <TextField fx:id="cardNumberField" layoutX="8.0" layoutY="441.0" prefHeight="31.0" prefWidth="316.0" AnchorPane.leftAnchor="8.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <Label alignment="BOTTOM_LEFT" layoutY="467.0" prefHeight="31.0" prefWidth="237.0" text="Giltighetsdatum och säkerhetskod:" AnchorPane.leftAnchor="8.0" />
-                                    <Label layoutX="134.0" layoutY="498.0" prefHeight="31.0" prefWidth="35.0" text="CVC:" AnchorPane.leftAnchor="134.0" />
-                                    <TextField fx:id="cardCVCField" layoutX="134.0" layoutY="529.0" prefHeight="31.0" prefWidth="68.0" AnchorPane.leftAnchor="134.0">
+                                    <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="482.0" prefHeight="31.0" prefWidth="237.0" text="Giltighetsdatum och säkerhetskod:" AnchorPane.leftAnchor="8.0" />
+                                    <Label layoutX="134.0" layoutY="513.0" prefHeight="31.0" prefWidth="35.0" text="CVC:" AnchorPane.leftAnchor="134.0" />
+                                    <TextField fx:id="cardCVCField" layoutX="134.0" layoutY="544.0" prefHeight="31.0" prefWidth="68.0" AnchorPane.leftAnchor="134.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <TextField fx:id="cardMonthField" layoutX="2.0" layoutY="529.0" prefHeight="31.0" prefWidth="42.0" AnchorPane.leftAnchor="8.0">
+                                    <TextField fx:id="cardMonthField" layoutX="8.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" AnchorPane.leftAnchor="8.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <Label layoutX="46.0" layoutY="529.0" prefHeight="31.0" prefWidth="20.0" text="/" AnchorPane.leftAnchor="52.0">
+                                    <Label layoutX="52.0" layoutY="544.0" prefHeight="31.0" prefWidth="20.0" text="/" AnchorPane.leftAnchor="52.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></Label>
-                                    <Label alignment="CENTER" layoutY="498.0" prefHeight="31.0" prefWidth="42.0" text="MM" AnchorPane.leftAnchor="6.0" />
-                                    <TextField fx:id="cardYearField" layoutX="56.0" layoutY="529.0" prefHeight="31.0" prefWidth="42.0" AnchorPane.leftAnchor="62.0">
+                                    <Label alignment="CENTER" layoutX="6.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="MM" AnchorPane.leftAnchor="6.0" />
+                                    <TextField fx:id="cardYearField" layoutX="62.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" AnchorPane.leftAnchor="62.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font></TextField>
-                                    <Label alignment="CENTER" layoutX="56.0" layoutY="498.0" prefHeight="31.0" prefWidth="42.0" text="ÅÅ" AnchorPane.leftAnchor="62.0" />
+                                    <Label alignment="CENTER" layoutX="62.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="ÅÅ" AnchorPane.leftAnchor="62.0" />
                                     <Button fx:id="backToCartButton" layoutY="577.0" mnemonicParsing="false" onAction="#backToCartButtonPushed" prefHeight="54.0" prefWidth="93.0" text="Bakåt" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
                                     <Button fx:id="toConfirmationViewButton" layoutX="241.0" layoutY="587.0" mnemonicParsing="false" onAction="#toConfirmationViewButtonPushed" prefHeight="54.0" prefWidth="93.0" text="Nästa" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                    <Button fx:id="saveButton" layoutX="93.0" layoutY="585.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="54.0" prefWidth="152.0" text="Spara" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="87.0" />
-                                    <Label alignment="BOTTOM_LEFT" layoutX="9.0" layoutY="53.0" prefHeight="31.0" prefWidth="316.0" text="Personuppgifter:" />
-                                    <Label alignment="BOTTOM_LEFT" layoutY="284.0" prefHeight="31.0" prefWidth="154.0" text="Betalningsuppgifter:" AnchorPane.leftAnchor="8.0" />
-                                    <RadioButton fx:id="cardVisaRadioButton" layoutY="358.0" mnemonicParsing="false" onAction="#cardVisaRadioButtonToggled" selected="true" text="Visa" AnchorPane.leftAnchor="8.0" />
-                                    <RadioButton fx:id="cardMastercardRadioButton" layoutX="135.0" layoutY="358.0" mnemonicParsing="false" onAction="#cardMastercardRadioButtonToggled" text="Mastercard" AnchorPane.leftAnchor="135.0" />
-                                    <Label alignment="BOTTOM_LEFT" layoutY="315.0" prefHeight="31.0" prefWidth="154.0" text="Korttyp:" AnchorPane.leftAnchor="8.0" />
+                                    <Button fx:id="saveOrEditButton" layoutX="93.0" layoutY="585.0" mnemonicParsing="false" onAction="#saveOrEditButtonPressed" prefHeight="54.0" prefWidth="152.0" text="Spara" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="87.0" />
+                                    <Label alignment="BOTTOM_LEFT" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="316.0" text="Personuppgifter:" />
+                                    <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="315.0" prefHeight="31.0" prefWidth="154.0" text="Betalningsuppgifter:" AnchorPane.leftAnchor="8.0" />
+                                    <RadioButton fx:id="cardVisaRadioButton" layoutX="8.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardVisaRadioButtonToggled" selected="true" text="Visa" AnchorPane.leftAnchor="8.0" />
+                                    <RadioButton fx:id="cardMastercardRadioButton" layoutX="135.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardMastercardRadioButtonToggled" text="Mastercard" AnchorPane.leftAnchor="135.0" />
+                                    <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="340.0" prefHeight="31.0" prefWidth="154.0" text="Korttyp:" AnchorPane.leftAnchor="8.0" />
+                                    <TextField fx:id="customerPostAddressField" layoutX="6.0" layoutY="265.0" prefHeight="38.0" prefWidth="324.0" promptText="Postort" AnchorPane.leftAnchor="8.0">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </TextField>
                                  </children>
                               </AnchorPane>
                            </children>
                         </StackPane>
-                        <AnchorPane fx:id="orderPlacedView" prefHeight="647.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="orderPlacedView" prefHeight="647.0" prefWidth="398.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="54.0" prefWidth="367.0" text="Tack för ditt köp!" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                                  <font>

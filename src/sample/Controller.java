@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -117,7 +118,7 @@ public class Controller implements ShoppingCartListener {
     private Button toConfirmationViewButton;
 
     @FXML
-    private Button saveButton;
+    private Button saveOrEditButton;
     @FXML
     private Button backToInfoButton;
     @FXML
@@ -141,6 +142,8 @@ public class Controller implements ShoppingCartListener {
     @FXML
     private ListView shoppingHistoryListView;
     @FXML
+    private TextField customerPostAddressField;
+    @FXML
     private AnchorPane orderPlacedView;
 
     @FXML
@@ -154,24 +157,31 @@ public class Controller implements ShoppingCartListener {
     }
 
     @FXML
-    void saveButtonPressed(ActionEvent evt) {
-        //Save customer
-        IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
-        IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
-        IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
-        IMatDataHandler.getInstance().getCustomer().setAddress(customerAdressField.getText());
-        IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
-        IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
-        //Save billing info
-        IMatDataHandler.getInstance().getCreditCard().setHoldersName(customerFirstNameField.getText() + " " + customerLastNameField.getText());
-        IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
-        IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
-        IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
-        IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(cardYearField.getText()));
-        if (cardVisaRadioButton.isSelected()) {
-            IMatDataHandler.getInstance().getCreditCard().setCardType(cardVisaRadioButton.getText());
-        } else if (cardMastercardRadioButton.isSelected()) {
-            IMatDataHandler.getInstance().getCreditCard().setCardType(cardMastercardRadioButton.getText());
+    void saveOrEditButtonPressed(ActionEvent evt) {
+        if (saveOrEditButton.getText().equals("Spara")) {
+            //Save customer
+            IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
+            IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
+            IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
+            IMatDataHandler.getInstance().getCustomer().setAddress(customerAdressField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostAddress(customerPostAddressField.getText());
+            //Save billing info
+            IMatDataHandler.getInstance().getCreditCard().setHoldersName(customerFirstNameField.getText() + " " + customerLastNameField.getText());
+            IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
+            IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
+            IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
+            IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(cardYearField.getText()));
+            IMatDataHandler.getInstance().getCreditCard().setCardType(getSelectedCard());
+
+            saveOrEditButton.setText("Ändra");
+            setInfoViewCustomerFieldsDisable(true);
+            setInfoViewCardFieldsDisable(true);
+        } else {
+            setInfoViewCustomerFieldsDisable(false);
+            setInfoViewCardFieldsDisable(false);
+            saveOrEditButton.setText("Spara");
         }
         //todo need to check if numbers before reading some fields OR maybe combobox
     }
@@ -201,8 +211,8 @@ public class Controller implements ShoppingCartListener {
         setRightHandView(orderPlacedView);
 
         ObservableList<String> orders = FXCollections.observableArrayList();
-        for(Order o: IMatDataHandler.getInstance().getOrders()) {
-        orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
+        for (Order o : IMatDataHandler.getInstance().getOrders()) {
+            orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
         }
         shoppingHistoryListView.setItems(orders);
 
@@ -332,7 +342,6 @@ public class Controller implements ShoppingCartListener {
         cartListView.refresh();
         if (cartEvent.isAddEvent()) {
             setRightHandView(cartViewHBox);
-            System.out.println("haaaaaaaaaalp");
         }
     }
 
@@ -343,6 +352,62 @@ public class Controller implements ShoppingCartListener {
         confirmationView.setVisible(false);
         orderPlacedView.setVisible(false);
         p.setVisible(true);
+
+        if (p == infoView && IMatDataHandler.getInstance().isCustomerComplete()) {
+            Customer c = IMatDataHandler.getInstance().getCustomer();
+            customerFirstNameField.setText(c.getFirstName());
+            customerLastNameField.setText(c.getLastName());
+            customerAdressField.setText(c.getAddress());
+            customerEmailField.setText(c.getEmail());
+            customerPhonenumberField.setText(c.getMobilePhoneNumber());
+            customerPostCodeField.setText(c.getPostCode());
+            customerPostAddressField.setText(c.getPostAddress());
+
+            CreditCard cC = IMatDataHandler.getInstance().getCreditCard();
+            cardNumberField.setText(cC.getCardNumber());
+            cardCVCField.setText(cC.getVerificationCode() + "");
+            cardYearField.setText(cC.getValidYear() + "");
+            cardMonthField.setText(cC.getValidMonth() + "");
+            if(cC.getCardType().equals("Visa")){
+                cardVisaRadioButtonToggled();
+            }else{
+                cardMastercardRadioButtonToggled();
+            }
+
+            setInfoViewCustomerFieldsDisable(true);
+            setInfoViewCardFieldsDisable(true);
+            saveOrEditButton.setText("Ändra");
+        }
+    }
+
+    //disable textfields in infoview
+    void setInfoViewCustomerFieldsDisable(boolean b) {
+        customerFirstNameField.setDisable(b);
+        customerLastNameField.setDisable(b);
+        customerAdressField.setDisable(b);
+        customerEmailField.setDisable(b);
+        customerPhonenumberField.setDisable(b);
+        customerPostCodeField.setDisable(b);
+        customerPostAddressField.setDisable(b);
+    }
+
+    void setInfoViewCardFieldsDisable(boolean b) {
+        cardMonthField.setDisable(b);
+        cardYearField.setDisable(b);
+        cardCVCField.setDisable(b);
+        cardNumberField.setDisable(b);
+        cardMastercardRadioButton.setDisable(b);
+        cardVisaRadioButton.setDisable(b);
+    }
+
+    String getSelectedCard() {
+        if (cardVisaRadioButton.isSelected()) {
+            return cardVisaRadioButton.getText();
+        } else if (cardMastercardRadioButton.isSelected()) {
+            return cardMastercardRadioButton.getText();
+        } else {
+            return "";
+        }
     }
 
     /**
@@ -377,13 +442,8 @@ public class Controller implements ShoppingCartListener {
     private void setPaymentConfirmationListView() {
         ObservableList<String> oL = FXCollections.observableArrayList();
         oL.add(customerFirstNameField.getText() + " " + customerLastNameField.getText());
-        if (cardVisaRadioButton.isSelected()) {
-            oL.add(cardVisaRadioButton.getText() + " " + cardNumberField.getText());
-        } else if (cardMastercardRadioButton.isSelected()) {
-            oL.add(cardVisaRadioButton.getText() + " " + cardNumberField.getText());
-        }
+        oL.add(getSelectedCard() + " " + cardNumberField.getText());
         oL.add(customerAdressField.getText());
         paymentConfirmationListView.setItems(oL);
-        // paymentConfirmationListView.refresh();
     }
 }
