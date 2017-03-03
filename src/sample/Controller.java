@@ -15,7 +15,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -23,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
-
 
 public class Controller implements ShoppingCartListener {
 
@@ -74,9 +72,6 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     private ListView<ShoppingItem> cartListView;
-
-    @FXML
-    private Button buyButton;
 
     @FXML
     private AnchorPane infoView;
@@ -144,7 +139,9 @@ public class Controller implements ShoppingCartListener {
     @FXML
     private TextField customerPostAddressField;
     @FXML
-    private AnchorPane orderPlacedView;
+    private AnchorPane completionView;
+    @FXML
+    private AnchorPane historyView;
 
     @FXML
     void cardMastercardRadioButtonToggled() {
@@ -208,14 +205,7 @@ public class Controller implements ShoppingCartListener {
     void confirmationButtonPushed(ActionEvent event) {
         shoppingProgressBar.setProgress(1);
         IMatDataHandler.getInstance().placeOrder(true);
-        setRightHandView(orderPlacedView);
-
-        ObservableList<String> orders = FXCollections.observableArrayList();
-        for (Order o : IMatDataHandler.getInstance().getOrders()) {
-            orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
-        }
-        shoppingHistoryListView.setItems(orders);
-
+        setRightHandView(completionView);
     }
 
     @FXML
@@ -257,6 +247,21 @@ public class Controller implements ShoppingCartListener {
             updateProducts((ArrayList<Product>) filter);
         }
 
+    }
+
+    @FXML
+    void cartPushed(ActionEvent event) {
+        setRightHandView(cartViewHBox);
+    }
+
+    @FXML
+    void historyPushed(ActionEvent event) {
+        setRightHandView(historyView);
+    }
+
+    @FXML
+    void accountPushed(ActionEvent event) {
+        setRightHandView(infoView);
     }
 
     @FXML
@@ -350,7 +355,8 @@ public class Controller implements ShoppingCartListener {
         cartViewHBox.setVisible(false);
         infoView.setVisible(false);
         confirmationView.setVisible(false);
-        orderPlacedView.setVisible(false);
+        completionView.setVisible(false);
+        historyView.setVisible(false);
         p.setVisible(true);
 
         if (p == infoView && IMatDataHandler.getInstance().isCustomerComplete()) {
@@ -368,15 +374,22 @@ public class Controller implements ShoppingCartListener {
             cardCVCField.setText(cC.getVerificationCode() + "");
             cardYearField.setText(cC.getValidYear() + "");
             cardMonthField.setText(cC.getValidMonth() + "");
-            if(cC.getCardType().equals("Visa")){
+
+            if (cC.getCardType().equals("Visa")) {
                 cardVisaRadioButtonToggled();
-            }else{
+            } else {
                 cardMastercardRadioButtonToggled();
             }
 
             setInfoViewCustomerFieldsDisable(true);
             setInfoViewCardFieldsDisable(true);
             saveOrEditButton.setText("Ändra");
+        } else if (p == historyView) {
+            ObservableList<String> orders = FXCollections.observableArrayList();
+            for (Order o : IMatDataHandler.getInstance().getOrders()) {
+                orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
+            }
+            shoppingHistoryListView.setItems(orders);
         }
     }
 
