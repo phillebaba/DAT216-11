@@ -2,7 +2,9 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -95,14 +97,20 @@ public class ProductViewCell extends AnchorPane {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                for(ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()){
-                    if(sI.getProduct().equals(product)){
-                        IMatDataHandler.getInstance().getShoppingCart().removeItem(sI);
-                        break;
-                    }
+                Double amount = Double.valueOf(amountField.getText());
+
+                List<ShoppingItem> currentItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
+                List<ShoppingItem> duplicates = currentItems.stream().filter(p -> p.getProduct().equals(product)).collect(Collectors.toList());;
+
+                // The product already exists
+                if (duplicates.size() > 0) {
+                    ShoppingItem duplicate = duplicates.get(0);
+                    duplicate.setAmount(duplicate.getAmount() + amount);
+                    IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(duplicate, false);
+                } else {
+                    IMatDataHandler.getInstance().getShoppingCart().addProduct(product, amount);
+                    amountField.setText("1.0");
                 }
-                IMatDataHandler.getInstance().getShoppingCart().addProduct(product, Double.valueOf(amountField.getText()));
-                amountField.setText("1.0");
             }
         });
     }
