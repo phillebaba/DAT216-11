@@ -239,14 +239,14 @@ public class Controller implements ShoppingCartListener {
         if (searchField.getText().length() == 0) {
             updateProducts(new ArrayList<>());
         } else {
-            // Show products with names containing the search field text
             List<Product> products = IMatDataHandler.getInstance().getProducts();
-            Pattern pattern = Pattern.compile("^(?i)" + searchField.getText() + "\\w*");
+            String regex = searchField.getText().length() < 4 ? "^(?i)" + searchField.getText() + ".*" : ".*(?i)" + searchField.getText() + ".*";
+            Pattern pattern = Pattern.compile(regex);
             Predicate<Product> predicate = p -> pattern.matcher(p.getName()).matches();
             List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+            System.out.println(filter.size());
             updateProducts((ArrayList<Product>) filter);
         }
-
     }
 
     @FXML
