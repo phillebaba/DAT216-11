@@ -19,7 +19,6 @@ import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import se.chalmers.ait.dat215.project.*;
 
@@ -31,11 +30,9 @@ public class Controller implements ShoppingCartListener {
     @FXML
     private URL location;
 
+    // Top left view variables
     @FXML
     private TextField searchField;
-
-    @FXML
-    private Button searchButton;
 
     @FXML
     private Button fruitButton;
@@ -61,18 +58,18 @@ public class Controller implements ShoppingCartListener {
     @FXML
     private Button vegetableButton;
 
+    // Left view variables
     @FXML
     private TilePane productPane;
 
+    // Right view, shopping cart view variables
     @FXML
-    private StackPane rightPane;
+    private VBox cartView;
 
     @FXML
-    private VBox cartViewHBox;
+    private ListView<ShoppingItem> cartList;
 
-    @FXML
-    private ListView<ShoppingItem> cartListView;
-
+    // Right view, customer and card details view variables
     @FXML
     private AnchorPane infoView;
 
@@ -86,7 +83,10 @@ public class Controller implements ShoppingCartListener {
     private TextField customerPostCodeField;
 
     @FXML
-    private TextField customerAdressField;
+    private TextField customerPostAddressField;
+
+    @FXML
+    private TextField customerAddressField;
 
     @FXML
     private TextField customerEmailField;
@@ -107,41 +107,44 @@ public class Controller implements ShoppingCartListener {
     private TextField cardYearField;
 
     @FXML
-    private Button backToCartButton;
+    private RadioButton cardMastercardRadioButton;
 
     @FXML
-    private Button toConfirmationViewButton;
+    private RadioButton cardVisaRadioButton;
 
     @FXML
     private Button saveOrEditButton;
-    @FXML
-    private Button backToInfoButton;
-    @FXML
-    private Button confirmationButton;
+
+    // Right view, purchase confirmation view variables
     @FXML
     private AnchorPane confirmationView;
+
     @FXML
-    private RadioButton cardMastercardRadioButton;
+    private ListView confirmationCartProductList; // product names and prices are separated into two lists
+    // (TODO make customized listcell for both)
     @FXML
-    private ListView cartConfirmationListView;
+    private ListView confirmationCartPriceList;
+
     @FXML
-    private ListView cartPriceConfirmationListView;
+    private Label confirmationCartTotalPriceLabel;
+
     @FXML
-    private ListView<String> paymentConfirmationListView;
-    @FXML
-    private RadioButton cardVisaRadioButton;
-    @FXML
-    private ProgressBar shoppingProgressBar;
-    @FXML
-    private Label cartTotalPriceConfirmationLabel;
-    @FXML
-    private ListView shoppingHistoryListView;
-    @FXML
-    private TextField customerPostAddressField;
-    @FXML
-    private AnchorPane completionView;
+    private ListView<String> confirmationPaymentInfoList;
+
+    // Right view, shopping history view variables
     @FXML
     private AnchorPane historyView;
+
+    @FXML
+    private ListView shoppingHistoryList;
+
+    // Right view, completed purchase view variables
+    @FXML
+    private AnchorPane completionView;
+
+    // Top right view variables
+    @FXML
+    private ProgressBar shoppingProgressBar;
 
     @FXML
     void cardMastercardRadioButtonToggled() {
@@ -156,23 +159,11 @@ public class Controller implements ShoppingCartListener {
     @FXML
     void saveOrEditButtonPressed(ActionEvent evt) {
         if (saveOrEditButton.getText().equals("Spara")) {
-            //Save customer
-            IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
-            IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
-            IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
-            IMatDataHandler.getInstance().getCustomer().setAddress(customerAdressField.getText());
-            IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
-            IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
-            IMatDataHandler.getInstance().getCustomer().setPostAddress(customerPostAddressField.getText());
-            //Save billing info
-            IMatDataHandler.getInstance().getCreditCard().setHoldersName(customerFirstNameField.getText() + " " + customerLastNameField.getText());
-            IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
-            IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
-            IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
-            IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(cardYearField.getText()));
-            IMatDataHandler.getInstance().getCreditCard().setCardType(getSelectedCard());
-
+            // saves customer and card information from the fields at infoview
+            saveCustomer();
+            saveCard();
             saveOrEditButton.setText("Ändra");
+            // Disables customer and card fields
             setInfoViewCustomerFieldsDisable(true);
             setInfoViewCardFieldsDisable(true);
         } else {
@@ -198,7 +189,7 @@ public class Controller implements ShoppingCartListener {
         setCartConfirmationListView();
 
         shoppingProgressBar.setProgress(0.66);
-        cartTotalPriceConfirmationLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " KR");
+        confirmationCartTotalPriceLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " KR");
     }
 
     @FXML
@@ -216,7 +207,7 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     void backToCartButtonPushed(ActionEvent event) {
-        setRightHandView(cartViewHBox);
+        setRightHandView(cartView);
         shoppingProgressBar.setProgress(0);
     }
 
@@ -241,17 +232,18 @@ public class Controller implements ShoppingCartListener {
         } else {
             // Show products with names containing the search field text
             List<Product> products = IMatDataHandler.getInstance().getProducts();
-            Pattern pattern = Pattern.compile("^(?i)" + searchField.getText() + "\\w*");
+            String regex = searchField.getText().length() < 4 ? "^(?i)" + searchField.getText() + ".*" : ".*(?i)" + searchField.getText() + ".*";
+            Pattern pattern = Pattern.compile(regex);
             Predicate<Product> predicate = p -> pattern.matcher(p.getName()).matches();
             List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
+            System.out.println(filter.size());
             updateProducts((ArrayList<Product>) filter);
         }
-
     }
 
     @FXML
     void cartPushed(ActionEvent event) {
-        setRightHandView(cartViewHBox);
+        setRightHandView(cartView);
     }
 
     @FXML
@@ -275,9 +267,8 @@ public class Controller implements ShoppingCartListener {
         assert sweetButton != null : "fx:id=\"sweetButton\" was not injected: check your FXML file 'sample.fxml'.";
         assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
         assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
-        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'sample.fxml'.";
         assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
-        assert cartListView != null : "fx:id=\"cartListView\" was not injected: check your FXML file 'sample.fxml'.";
+        assert cartList != null : "fx:id=\"cartList\" was not injected: check your FXML file 'sample.fxml'.";
 
         // Setup product map translation from button to categories
         ArrayList<ProductCategory> fruitList = new ArrayList<ProductCategory>();
@@ -331,7 +322,7 @@ public class Controller implements ShoppingCartListener {
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
 
         // Set custom cell factory
-        cartListView.setCellFactory(cartListView -> new CartViewCell());
+        cartList.setCellFactory(cartListView -> new CartViewCell());
     }
 
     private ObservableList<ShoppingItem> cartItemObservableList;
@@ -343,16 +334,16 @@ public class Controller implements ShoppingCartListener {
         cartItemObservableList.addAll(IMatDataHandler.getInstance().getShoppingCart().getItems());
 
         // Add all items to shopping cart list
-        cartListView.setItems(cartItemObservableList);
-        cartListView.refresh();
+        cartList.setItems(cartItemObservableList);
+        cartList.refresh();
         if (cartEvent.isAddEvent()) {
-            setRightHandView(cartViewHBox);
+            setRightHandView(cartView);
         }
     }
 
     //must be one of the views from the payment process
     void setRightHandView(Pane p) {
-        cartViewHBox.setVisible(false);
+        cartView.setVisible(false);
         infoView.setVisible(false);
         confirmationView.setVisible(false);
         completionView.setVisible(false);
@@ -360,44 +351,82 @@ public class Controller implements ShoppingCartListener {
         p.setVisible(true);
 
         if (p == infoView && IMatDataHandler.getInstance().isCustomerComplete()) {
-            Customer c = IMatDataHandler.getInstance().getCustomer();
-            customerFirstNameField.setText(c.getFirstName());
-            customerLastNameField.setText(c.getLastName());
-            customerAdressField.setText(c.getAddress());
-            customerEmailField.setText(c.getEmail());
-            customerPhonenumberField.setText(c.getMobilePhoneNumber());
-            customerPostCodeField.setText(c.getPostCode());
-            customerPostAddressField.setText(c.getPostAddress());
-
-            CreditCard cC = IMatDataHandler.getInstance().getCreditCard();
-            cardNumberField.setText(cC.getCardNumber());
-            cardCVCField.setText(cC.getVerificationCode() + "");
-            cardYearField.setText(cC.getValidYear() + "");
-            cardMonthField.setText(cC.getValidMonth() + "");
-
-            if (cC.getCardType().equals("Visa")) {
-                cardVisaRadioButtonToggled();
-            } else {
-                cardMastercardRadioButtonToggled();
-            }
+            setCustomerFields(IMatDataHandler.getInstance().getCustomer());
+            setCardFields(IMatDataHandler.getInstance().getCreditCard());
 
             setInfoViewCustomerFieldsDisable(true);
             setInfoViewCardFieldsDisable(true);
+
             saveOrEditButton.setText("Ändra");
+
         } else if (p == historyView) {
             ObservableList<String> orders = FXCollections.observableArrayList();
-            for (Order o : IMatDataHandler.getInstance().getOrders()) {
-                orders.add("Order nr: " + o.getOrderNumber() + " Datum: " + o.getDate());
+            // list previous orders as date + price
+            for (Order order : IMatDataHandler.getInstance().getOrders()) {
+
+                double orderTotal = 0;
+                // get total sum of all products
+                for (ShoppingItem sI : order.getItems()) {
+
+                    orderTotal = orderTotal + sI.getTotal();
+
+                }
+
+                orders.add(order.getDate() + "  " + orderTotal + " Kr");
             }
-            shoppingHistoryListView.setItems(orders);
+            shoppingHistoryList.setItems(orders);
         }
+    }
+
+    private void setCustomerFields(Customer c) {
+        customerFirstNameField.setText(c.getFirstName());
+        customerLastNameField.setText(c.getLastName());
+        customerAddressField.setText(c.getAddress());
+        customerEmailField.setText(c.getEmail());
+        customerPhonenumberField.setText(c.getMobilePhoneNumber());
+        customerPostCodeField.setText(c.getPostCode());
+        customerPostAddressField.setText(c.getPostAddress());
+
+    }
+
+    private void setCardFields(CreditCard c) {
+        cardNumberField.setText(c.getCardNumber());
+        cardCVCField.setText(c.getVerificationCode() + "");
+        cardYearField.setText(c.getValidYear() + "");
+        cardMonthField.setText(c.getValidMonth() + "");
+
+        if (c.getCardType().equals("Visa")) {
+            cardVisaRadioButtonToggled();
+        } else if (c.getCardType().equals("Mastercard")) {
+            cardMastercardRadioButtonToggled();
+        }
+    }
+
+    private void saveCustomer() {
+        IMatDataHandler.getInstance().getCustomer().setFirstName(customerFirstNameField.getText());
+        IMatDataHandler.getInstance().getCustomer().setLastName(customerLastNameField.getText());
+        IMatDataHandler.getInstance().getCustomer().setEmail(customerEmailField.getText());
+        IMatDataHandler.getInstance().getCustomer().setAddress(customerAddressField.getText());
+        IMatDataHandler.getInstance().getCustomer().setPhoneNumber(customerPhonenumberField.getText());
+        IMatDataHandler.getInstance().getCustomer().setPostCode(customerPostCodeField.getText());
+        IMatDataHandler.getInstance().getCustomer().setPostAddress(customerPostAddressField.getText());
+    }
+
+    private void saveCard() {
+        // Cardholder name is read from customer name fields
+        IMatDataHandler.getInstance().getCreditCard().setHoldersName(customerFirstNameField.getText() + " " + customerLastNameField.getText());
+        IMatDataHandler.getInstance().getCreditCard().setCardNumber(cardNumberField.getText());
+        IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(cardCVCField.getText()));
+        IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(cardYearField.getText()));
+        IMatDataHandler.getInstance().getCreditCard().setCardType(getSelectedCard());
     }
 
     //disable textfields in infoview
     void setInfoViewCustomerFieldsDisable(boolean b) {
         customerFirstNameField.setDisable(b);
         customerLastNameField.setDisable(b);
-        customerAdressField.setDisable(b);
+        customerAddressField.setDisable(b);
         customerEmailField.setDisable(b);
         customerPhonenumberField.setDisable(b);
         customerPostCodeField.setDisable(b);
@@ -448,15 +477,15 @@ public class Controller implements ShoppingCartListener {
             oLNames.add(sI.getProduct().getName());
             oLPrices.add(sI.getTotal() + " KR");
         }
-        cartConfirmationListView.setItems(oLNames);
-        cartPriceConfirmationListView.setItems(oLPrices);
+        confirmationCartProductList.setItems(oLNames);
+        confirmationCartPriceList.setItems(oLPrices);
     }
 
     private void setPaymentConfirmationListView() {
         ObservableList<String> oL = FXCollections.observableArrayList();
         oL.add(customerFirstNameField.getText() + " " + customerLastNameField.getText());
         oL.add(getSelectedCard() + " " + cardNumberField.getText());
-        oL.add(customerAdressField.getText());
-        paymentConfirmationListView.setItems(oL);
+        oL.add(customerAddressField.getText());
+        confirmationPaymentInfoList.setItems(oL);
     }
 }

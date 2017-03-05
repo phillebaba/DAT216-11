@@ -36,7 +36,6 @@ public class CartViewCell extends ListCell<ShoppingItem> {
     private HBox cartViewHBox;
 
 
-
     private FXMLLoader mLLoader;
 
     private ShoppingItem cartItem;
@@ -105,11 +104,12 @@ public class CartViewCell extends ListCell<ShoppingItem> {
 
     private void setAmountField(double d) {
         String s = cartItem.getProduct().getUnitSuffix();
-        if(s.equals("st") || s.equals("förp")){
-            amountField.setText((int)d + "");
-        }else{
-        amountField.setText(d + "");
-    }}
+        if (s.equals("st") || s.equals("förp")) {
+            amountField.setText((int) d + "");
+        } else {
+            amountField.setText(d + "");
+        }
+    }
 
     private void incrementProductAmount() {
         cartItem.setAmount(cartItem.getAmount() + 1);

@@ -26,7 +26,7 @@
          <children>
             <SplitPane dividerPositions="0.2349799732977303" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: white;" styleClass="light-primary-color">
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: white;" styleClass="default-primary-color">
                      <children>
                         <TextField fx:id="searchField" layoutX="109.0" layoutY="3.0" minWidth="150.0" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="467.0" promptText="Sök vara..." style="-fx-background-color: background;" styleClass="light-primary-color" AnchorPane.leftAnchor="109.0">
                            <font>
@@ -50,7 +50,7 @@
                            <children>
                               <Button fx:id="fruitButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Frukt">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -58,7 +58,7 @@
                                  </styleClass></Button>
                               <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="54.0" prefWidth="154.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -66,7 +66,7 @@
                                  </styleClass></Button>
                               <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Drycker" GridPane.columnIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -74,7 +74,7 @@
                                  </styleClass></Button>
                               <Button fx:id="sweetButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -82,7 +82,7 @@
                                  </styleClass></Button>
                               <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Kött och Fisk" GridPane.columnIndex="2">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -90,7 +90,7 @@
                                  </styleClass></Button>
                               <Button fx:id="pantryButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Skafferi" GridPane.columnIndex="3">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -98,7 +98,7 @@
                                  </styleClass></Button>
                               <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -106,7 +106,7 @@
                                  </styleClass></Button>
                               <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -174,7 +174,7 @@
                      <children>
                         <StackPane fx:id="rightPane" layoutX="-9.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox fx:id="cartViewHBox" prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: background;" styleClass="dark-primary-color" visible="false">
+                              <VBox fx:id="cartView" prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: background;" styleClass="dark-primary-color" visible="false">
                                  <children>
                                     <Label prefHeight="69.0" prefWidth="332.0" style="-fx-text-fill: white;" text="MIN KUNDVAGN">
                                        <font>
@@ -191,7 +191,7 @@
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" prefHeight="50.0" prefWidth="27.0" style="-fx-text-fill: white;" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
-                                    <ListView fx:id="cartListView" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
+                                    <ListView fx:id="cartList" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
                                     <Button fx:id="buyOrEditButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="KASSA" VBox.vgrow="ALWAYS">
                                        <effect>
                                           <InnerShadow choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
@@ -204,7 +204,7 @@
                                        <content>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="379.0" style="-fx-background-color: white;">
                                              <children>
-                                                <TextField fx:id="customerFirstNameField" layoutX="8.0" layoutY="77.0" prefHeight="31.0" prefWidth="154.0" promptText="Förnamn" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="77.0">
+                                                <TextField fx:id="customerFirstNameField" editable="false" layoutX="8.0" layoutY="77.0" prefHeight="31.0" prefWidth="154.0" promptText="Förnamn" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="77.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -219,7 +219,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <TextField fx:id="customerAdressField" layoutX="8.0" layoutY="124.0" prefHeight="31.0" prefWidth="324.0" promptText="Adress" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="124.0">
+                                                <TextField fx:id="customerAddressField" layoutX="8.0" layoutY="124.0" prefHeight="31.0" prefWidth="324.0" promptText="Adress" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="124.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -240,19 +240,19 @@
                                                    </font>
                                                 </Label>
                                                 <Label layoutX="8.0" layoutY="410.0" prefHeight="31.0" prefWidth="112.0" text="Kortnummer:" AnchorPane.leftAnchor="8.0" />
-                                                <TextField fx:id="cardNumberField" layoutX="8.0" layoutY="441.0" prefHeight="31.0" prefWidth="316.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0">
+                                                <TextField fx:id="cardNumberField" layoutX="8.0" layoutY="441.0" prefHeight="31.0" prefWidth="316.0" promptText="XXXX XXXX XXXX XXXX" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
                                                 <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="482.0" prefHeight="31.0" prefWidth="237.0" text="Giltighetsdatum och säkerhetskod:" AnchorPane.leftAnchor="8.0" />
                                                 <Label layoutX="134.0" layoutY="513.0" prefHeight="31.0" prefWidth="35.0" text="CVC:" AnchorPane.leftAnchor="134.0" />
-                                                <TextField fx:id="cardCVCField" layoutX="134.0" layoutY="544.0" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="134.0">
+                                                <TextField fx:id="cardCVCField" layoutX="134.0" layoutY="544.0" prefHeight="31.0" prefWidth="68.0" promptText="XXX" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="134.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <TextField fx:id="cardMonthField" layoutX="8.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0">
+                                                <TextField fx:id="cardMonthField" layoutX="8.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" promptText="MM" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -263,7 +263,7 @@
                                                    </font>
                                                 </Label>
                                                 <Label alignment="CENTER" layoutX="6.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="MM" AnchorPane.leftAnchor="6.0" />
-                                                <TextField fx:id="cardYearField" layoutX="62.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="62.0">
+                                                <TextField fx:id="cardYearField" layoutX="62.0" layoutY="544.0" prefHeight="31.0" prefWidth="42.0" promptText="ÅÅ" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="62.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -299,7 +299,7 @@
                               </AnchorPane>
                               <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0" visible="false">
                                  <children>
-                                    <ListView fx:id="cartConfirmationListView" layoutY="50.0" prefHeight="251.0" prefWidth="237.0" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="50.0" />
+                                    <ListView fx:id="confirmationCartProductList" layoutY="50.0" prefHeight="251.0" prefWidth="237.0" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="50.0" />
                                     <Label layoutY="-4.0" prefHeight="54.0" prefWidth="332.0" text="Kundvagn:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font size="33.0" />
@@ -312,14 +312,14 @@
                                     </Label>
                                     <Button fx:id="confirmButton" layoutX="89.0" layoutY="559.0" mnemonicParsing="false" onAction="#confirmationButtonPushed" prefHeight="70.0" prefWidth="243.0" text="Bekräfta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" />
                                     <Button fx:id="backToInfoButton" layoutY="559.0" mnemonicParsing="false" onAction="#backToInfoButtonPushed" prefHeight="70.0" prefWidth="93.0" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
-                                    <ListView fx:id="paymentConfirmationListView" layoutY="377.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                    <ListView fx:id="cartPriceConfirmationListView" layoutX="245.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="78.0" AnchorPane.bottomAnchor="289.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                                    <ListView fx:id="confirmationPaymentInfoList" layoutY="377.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                    <ListView fx:id="confirmationCartPriceList" layoutX="245.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="78.0" AnchorPane.bottomAnchor="289.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                                     <Label contentDisplay="RIGHT" layoutY="299.0" prefHeight="21.0" prefWidth="154.0" text="Totalbelopp:" textAlignment="RIGHT" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="0.0">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="cartTotalPriceConfirmationLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="320.0" layoutY="355.0" prefHeight="30.0" prefWidth="68.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="7.0" />
+                                    <Label fx:id="confirmationCartTotalPriceLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="320.0" layoutY="355.0" prefHeight="30.0" prefWidth="68.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="7.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="completionView" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -339,7 +339,7 @@
                                           <Font size="21.0" />
                                        </font>
                                     </Label>
-                                    <ListView fx:id="shoppingHistoryListView" layoutY="49.0" prefHeight="597.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0" />
+                                    <ListView fx:id="shoppingHistoryList" layoutY="49.0" prefHeight="597.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0" />
                                  </children>
                               </AnchorPane>
                            </children>
