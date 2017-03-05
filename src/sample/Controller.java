@@ -230,7 +230,6 @@ public class Controller implements ShoppingCartListener {
         if (searchField.getText().length() == 0) {
             updateProducts(new ArrayList<>());
         } else {
-            // Show products with names containing the search field text
             List<Product> products = IMatDataHandler.getInstance().getProducts();
             String regex = searchField.getText().length() < 4 ? "^(?i)" + searchField.getText() + ".*" : ".*(?i)" + searchField.getText() + ".*";
             Pattern pattern = Pattern.compile(regex);
