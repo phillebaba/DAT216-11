@@ -6,24 +6,48 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="175.0" style="-fx-background-color: white; -fx-border-color: black;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-color: black;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="imageView" fitHeight="118.0" fitWidth="175.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <TextField fx:id="amountField" alignment="CENTER" layoutX="68.0" layoutY="156.0" prefHeight="27.0" prefWidth="39.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" />
-      <Button fx:id="subtractButton" layoutX="36.0" layoutY="155.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="-">
+      <TextField fx:id="amountField" alignment="CENTER" layoutX="70.0" layoutY="157.0" prefHeight="27.0" prefWidth="39.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <Button fx:id="subtractButton" layoutX="38.0" layoutY="156.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="-" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="38.0">
          <effect>
             <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
-         </effect></Button>
-      <Button fx:id="incrementButton" layoutX="108.0" layoutY="155.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="+">
+         </effect>
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Button fx:id="incrementButton" layoutX="116.0" layoutY="156.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="+" AnchorPane.bottomAnchor="39.0" AnchorPane.rightAnchor="38.0">
          <effect>
             <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
-         </effect></Button>
-      <Button fx:id="addButton" layoutX="52.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="Lägg Till">
+         </effect>
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Button fx:id="addButton" layoutX="45.0" layoutY="188.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="Lägg Till" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0">
          <effect>
             <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
-         </effect></Button>
-      <Label fx:id="nameLable" layoutY="135.0" prefHeight="21.0" style="-fx-text-fill: black;" textFill="WHITE" AnchorPane.leftAnchor="0.0" />
-      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" layoutX="173.0" layoutY="135.0" style="-fx-text-fill: black;" textAlignment="RIGHT" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="1.0" />
+         </effect>
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Label fx:id="nameLable" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="119.0" prefHeight="26.0" prefWidth="134.0" style="-fx-text-fill: black;" text="product" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font></Label>
+      <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="140.0" prefHeight="26.0" prefWidth="117.0" style="-fx-text-fill: black;" text="price" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="118.0" prefWidth="175.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fx:id="imageView" fitHeight="118.0" fitWidth="188.0" pickOnBounds="true" />
+         </graphic>
+      </Label>
+      <Button fx:id="favoriteButton" layoutX="145.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="F" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </fx:root>

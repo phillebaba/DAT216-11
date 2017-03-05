@@ -44,6 +44,9 @@ public class ProductViewCell extends AnchorPane {
     private Button addButton;
 
     @FXML
+    private Button favoriteButton;
+
+    @FXML
     private Label nameLable;
 
     @FXML
@@ -77,7 +80,7 @@ public class ProductViewCell extends AnchorPane {
         Image image = new Image("file:" + System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName());
         imageView.setImage(image);
         nameLable.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()) + " KR");
+        priceLabel.setText(String.valueOf(product.getPrice()) + " Kr");
         amountField.setText("1.0");
 
         subtractButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -94,13 +97,21 @@ public class ProductViewCell extends AnchorPane {
             }
         });
 
+        favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                IMatDataHandler.getInstance().addFavorite(product);
+            }
+        });
+
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 Double amount = Double.valueOf(amountField.getText());
 
                 List<ShoppingItem> currentItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
-                List<ShoppingItem> duplicates = currentItems.stream().filter(p -> p.getProduct().equals(product)).collect(Collectors.toList());;
+                List<ShoppingItem> duplicates = currentItems.stream().filter(p -> p.getProduct().equals(product)).collect(Collectors.toList());
+                ;
 
                 // The product already exists
                 if (duplicates.size() > 0) {

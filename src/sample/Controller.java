@@ -224,6 +224,10 @@ public class Controller implements ShoppingCartListener {
             updateProducts(products);
         }
     }
+    @FXML
+    void favoriteButtonPushed(ActionEvent evt){
+        updateProducts((ArrayList)IMatDataHandler.getInstance().favorites());
+    }
 
     @FXML
     void searchButtonPushed(ActionEvent event) {
