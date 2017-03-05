@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
@@ -130,7 +131,7 @@
                                  </font></Button>
                               <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <effect>
-                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
+                                    <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.07" radius="5.5175" width="12.0" />
                                  </effect>
                                  <styleClass>
                                     <String fx:value="dark-primary-color" />
@@ -141,7 +142,7 @@
                                  </font></Button>
                            </children>
                         </GridPane>
-                        <Label layoutX="19.0" prefHeight="45.0" prefWidth="68.0" text="iMat" AnchorPane.leftAnchor="19.0">
+                        <Label layoutX="19.0" opacity="0.87" prefHeight="45.0" prefWidth="68.0" text="iMat" AnchorPane.leftAnchor="19.0">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -219,7 +220,7 @@
                      <children>
                         <StackPane fx:id="rightPane" layoutX="-9.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox fx:id="cartView" prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: background;" styleClass="dark-primary-color" visible="false">
+                              <VBox fx:id="cartView" prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: background;" styleClass="dark-primary-color">
                                  <children>
                                     <Label prefHeight="69.0" prefWidth="332.0" style="-fx-text-fill: white;" text="MIN KUNDVAGN">
                                        <font>
@@ -232,18 +233,21 @@
                                     <AnchorPane prefHeight="27.0" prefWidth="332.0">
                                        <children>
                                           <Label layoutX="-12.0" layoutY="5.0" prefHeight="33.0" prefWidth="68.0" style="-fx-text-fill: white;" text="Namn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0" />
-                                          <Label alignment="CENTER" layoutX="166.0" layoutY="6.0" prefHeight="38.0" prefWidth="42.0" style="-fx-text-fill: white;" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="0.0" />
-                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" prefHeight="50.0" prefWidth="27.0" style="-fx-text-fill: white;" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="0.0" />
+                                          <Label alignment="CENTER" layoutX="202.0" prefHeight="38.0" prefWidth="42.0" style="-fx-text-fill: white;" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="0.0" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" prefHeight="50.0" prefWidth="27.0" style="-fx-text-fill: white;" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <ListView fx:id="cartList" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="332.0" VBox.vgrow="ALWAYS" />
-                                    <Button fx:id="buyOrEditButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="KASSA" VBox.vgrow="ALWAYS">
+                                    <Button fx:id="buyOrEditButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="71.0" mnemonicParsing="false" onAction="#buyPushed" prefHeight="71.0" prefWidth="331.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="KASSA" VBox.vgrow="ALWAYS">
                                        <effect>
                                           <InnerShadow choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
-                                       </effect></Button>
+                                       </effect>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Button>
                                  </children>
                               </VBox>
-                              <AnchorPane fx:id="infoView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                              <AnchorPane fx:id="infoView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false">
                                  <children>
                                     <ScrollPane prefHeight="200.0" prefWidth="398.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
@@ -279,22 +283,25 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <Label alignment="TOP_LEFT" layoutY="-1.0" prefHeight="46.0" prefWidth="332.0" text="Information" AnchorPane.leftAnchor="8.0">
+                                                <Label alignment="TOP_LEFT" layoutY="-1.0" opacity="0.87" prefHeight="46.0" prefWidth="332.0" text="Information" AnchorPane.leftAnchor="8.0">
                                                    <font>
-                                                      <Font size="37.0" />
+                                                      <Font name="System Bold" size="24.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="8.0" layoutY="410.0" prefHeight="31.0" prefWidth="112.0" text="Kortnummer:" AnchorPane.leftAnchor="8.0" />
+                                                <Label layoutX="8.0" layoutY="410.0" prefHeight="31.0" prefWidth="112.0" text="Kortnummer:" AnchorPane.leftAnchor="8.0">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font></Label>
                                                 <TextField fx:id="cardNumberField" layoutX="8.0" layoutY="441.0" prefHeight="31.0" prefWidth="316.0" promptText="XXXX XXXX XXXX XXXX" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="482.0" prefHeight="31.0" prefWidth="237.0" text="Giltighetsdatum och säkerhetskod:" AnchorPane.leftAnchor="8.0">
+                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="482.0" opacity="0.87" prefHeight="31.0" text="Giltighetsdatum och säkerhetskod:" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
-                                                <Label layoutX="134.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="CVC:" AnchorPane.leftAnchor="134.0">
+                                                <Label layoutX="134.0" layoutY="513.0" opacity="0.87" prefHeight="31.0" prefWidth="42.0" text="CVC:" AnchorPane.leftAnchor="134.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
@@ -313,7 +320,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER" layoutX="6.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="MM" AnchorPane.leftAnchor="6.0">
+                                                <Label alignment="CENTER" layoutX="6.0" layoutY="513.0" opacity="0.87" prefHeight="31.0" prefWidth="42.0" text="MM" AnchorPane.leftAnchor="6.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
@@ -322,27 +329,27 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <Label alignment="CENTER" layoutX="62.0" layoutY="513.0" prefHeight="31.0" prefWidth="42.0" text="ÅÅ" AnchorPane.leftAnchor="62.0">
+                                                <Label alignment="CENTER" layoutX="62.0" layoutY="513.0" opacity="0.87" prefHeight="31.0" prefWidth="42.0" text="ÅÅ" AnchorPane.leftAnchor="62.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
-                                                <Label alignment="BOTTOM_LEFT" layoutX="9.0" layoutY="42.0" prefHeight="31.0" prefWidth="316.0" text="Personuppgifter:">
+                                                <Label alignment="BOTTOM_LEFT" layoutX="9.0" layoutY="42.0" opacity="0.87" prefHeight="31.0" prefWidth="316.0" text="Personuppgifter:">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
-                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="315.0" prefHeight="31.0" prefWidth="154.0" text="Betalningsuppgifter:" AnchorPane.leftAnchor="8.0">
+                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="315.0" opacity="0.87" prefHeight="31.0" prefWidth="154.0" text="Betalningsuppgifter:" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
-                                                <RadioButton fx:id="cardVisaRadioButton" layoutX="8.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardVisaRadioButtonToggled" selected="true" style="-fx-background-color: white;" stylesheets="@palette.css" text="Visa" AnchorPane.leftAnchor="8.0">
+                                                <RadioButton fx:id="cardVisaRadioButton" layoutX="8.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardVisaRadioButtonToggled" opacity="0.87" selected="true" style="-fx-background-color: white;" stylesheets="@palette.css" text="Visa" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></RadioButton>
-                                                <RadioButton fx:id="cardMastercardRadioButton" layoutX="135.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardMastercardRadioButtonToggled" style="-fx-background-color: white;" stylesheets="@palette.css" text="Mastercard" AnchorPane.leftAnchor="135.0">
+                                                <RadioButton fx:id="cardMastercardRadioButton" layoutX="135.0" layoutY="379.0" mnemonicParsing="false" onAction="#cardMastercardRadioButtonToggled" opacity="0.87" style="-fx-background-color: white;" stylesheets="@palette.css" text="Mastercard" AnchorPane.leftAnchor="135.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></RadioButton>
-                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="340.0" prefHeight="31.0" prefWidth="154.0" text="Korttyp:" AnchorPane.leftAnchor="8.0">
+                                                <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="340.0" opacity="0.87" prefHeight="31.0" prefWidth="154.0" text="Korttyp:" AnchorPane.leftAnchor="8.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font></Label>
@@ -355,60 +362,104 @@
                                           </AnchorPane>
                                        </content>
                                     </ScrollPane>
-                                    <Button fx:id="backToCartButton" mnemonicParsing="false" onAction="#backToCartButtonPushed" prefHeight="54.0" prefWidth="93.0" style="-fx-background-color: background;" styleClass="accent-color" text="Bakåt" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                                    <Button fx:id="backToCartButton" minHeight="71.0" mnemonicParsing="false" onAction="#backToCartButtonPushed" prefHeight="71.0" prefWidth="93.0" style="-fx-background-color: background;" styleClass="accent-color" text="Bakåt" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
-                                       </effect></Button>
-                                    <Button fx:id="toConfirmationViewButton" mnemonicParsing="false" onAction="#toConfirmationViewButtonPushed" prefHeight="54.0" prefWidth="93.0" style="-fx-background-color: background;" styleClass="accent-color" text="Nästa" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       </effect>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Button>
+                                    <Button fx:id="toConfirmationViewButton" minHeight="71.0" mnemonicParsing="false" onAction="#toConfirmationViewButtonPushed" prefHeight="71.0" prefWidth="93.0" style="-fx-background-color: background;" styleClass="accent-color" text="Nästa" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
-                                       </effect></Button>
-                                    <Button fx:id="saveOrEditButton" mnemonicParsing="false" onAction="#saveOrEditButtonPressed" prefHeight="54.0" prefWidth="152.0" style="-fx-background-color: background;" styleClass="accent-color" text="Spara" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="87.0">
+                                       </effect>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Button>
+                                    <Button fx:id="saveOrEditButton" minHeight="71.0" mnemonicParsing="false" onAction="#saveOrEditButtonPressed" prefHeight="71.0" prefWidth="152.0" style="-fx-background-color: background;" styleClass="accent-color" text="Spara" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="87.0">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
-                                       </effect></Button>
+                                       </effect>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0" visible="false">
+                              <AnchorPane fx:id="confirmationView" prefHeight="590.0" prefWidth="305.0" style="-fx-background-color: white;" visible="false">
                                  <children>
-                                    <ListView fx:id="confirmationCartProductList" layoutY="50.0" prefHeight="251.0" prefWidth="237.0" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="50.0" />
-                                    <Label layoutY="-4.0" prefHeight="54.0" prefWidth="332.0" text="Kundvagn:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="50.0" pannable="true" AnchorPane.bottomAnchor="295.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                       <content>
+                                          <HBox>
+                                             <children>
+                                                <Label fx:id="confirmationCartProductLabel" alignment="TOP_LEFT" prefWidth="316.0">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font></Label>
+                                                <Label fx:id="confirmationCartPriceLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="75.0" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font></Label>
+                                             </children>
+                                          </HBox>
+                                       </content>
+                                    </ScrollPane>
+                                    <Label alignment="BOTTOM_LEFT" layoutY="-4.0" prefHeight="54.0" prefWidth="332.0" text="Kundvagn:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
-                                          <Font size="33.0" />
+                                          <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutY="369.0" prefHeight="54.0" prefWidth="332.0" text="Betalningsuppgifter:" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                    <Label alignment="BOTTOM_LEFT" layoutY="369.0" prefHeight="54.0" prefWidth="332.0" text="Betalningsuppgifter:" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                        <font>
-                                          <Font size="33.0" />
+                                          <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="confirmButton" layoutX="89.0" layoutY="559.0" mnemonicParsing="false" onAction="#confirmationButtonPushed" prefHeight="70.0" prefWidth="243.0" text="Bekräfta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" />
-                                    <Button fx:id="backToInfoButton" layoutY="559.0" mnemonicParsing="false" onAction="#backToInfoButtonPushed" prefHeight="70.0" prefWidth="93.0" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
-                                    <ListView fx:id="confirmationPaymentInfoList" layoutY="377.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                    <ListView fx:id="confirmationCartPriceList" layoutX="245.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="78.0" AnchorPane.bottomAnchor="289.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                                    <Button fx:id="confirmButton" layoutX="89.0" layoutY="559.0" minHeight="71.0" mnemonicParsing="false" onAction="#confirmationButtonPushed" prefHeight="70.0" prefWidth="243.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Bekräfta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                       <effect>
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.13" radius="5.532500000000001" width="12.0" />
+                                       </effect></Button>
+                                    <Button fx:id="backToInfoButton" layoutY="559.0" minHeight="71.0" mnemonicParsing="false" onAction="#backToInfoButtonPushed" prefHeight="70.0" prefWidth="93.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                       <effect>
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.13" radius="5.532500000000001" width="12.0" />
+                                       </effect></Button>
+                                    <ListView fx:id="confirmationPaymentInfoList" focusTraversable="false" layoutY="377.0" prefHeight="126.0" prefWidth="332.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                     <Label contentDisplay="RIGHT" layoutY="299.0" prefHeight="21.0" prefWidth="154.0" text="Totalbelopp:" textAlignment="RIGHT" AnchorPane.bottomAnchor="261.0" AnchorPane.leftAnchor="0.0">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="confirmationCartTotalPriceLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="320.0" layoutY="355.0" prefHeight="30.0" prefWidth="68.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="7.0" />
+                                    <Label fx:id="confirmationCartTotalPriceLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="320.0" layoutY="355.0" prefHeight="30.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="0.0">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="completionView" prefHeight="200.0" prefWidth="200.0" visible="false">
+                              <AnchorPane fx:id="completionView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="light-primary-color" visible="false">
                                  <children>
-                                    <Label layoutX="88.0" layoutY="266.0" text="Tack för ditt köp!">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="135.0" opacity="0.87" text="Tack för ditt köp!" textAlignment="CENTER" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="108.0">
                                        <font>
-                                          <Font size="30.0" />
+                                          <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="167.0" layoutY="336.0" mnemonicParsing="false" text="Handla Igen" textAlignment="CENTER" />
+                                    <Button alignment="CENTER" layoutX="140.0" layoutY="206.0" mnemonicParsing="false" onAction="#shopAgainButtonPushed" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Handla Igen" textAlignment="CENTER" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="139.0">
+                                       <effect>
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.07" radius="5.5175" width="12.0" />
+                                       </effect>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font></Button>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="historyView" prefHeight="647.0" prefWidth="398.0" visible="false">
                                  <children>
-                                    <Label layoutX="13.0" layoutY="14.0" prefHeight="0.0" prefWidth="207.0" text="Köphistorik:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="14.0">
+                                    <Label layoutX="13.0" layoutY="14.0" opacity="0.87" prefHeight="0.0" prefWidth="207.0" text="Köphistorik:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="14.0">
                                        <font>
-                                          <Font size="21.0" />
+                                          <Font size="24.0" />
                                        </font>
                                     </Label>
                                     <ListView fx:id="shoppingHistoryList" layoutY="49.0" prefHeight="597.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0" />

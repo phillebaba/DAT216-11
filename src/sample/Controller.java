@@ -120,10 +120,10 @@ public class Controller implements ShoppingCartListener {
     private AnchorPane confirmationView;
 
     @FXML
-    private ListView confirmationCartProductList; // product names and prices are separated into two lists
+    private Label confirmationCartProductLabel; // product names and prices are separated into two lists
     // (TODO make customized listcell for both)
     @FXML
-    private ListView confirmationCartPriceList;
+    private Label confirmationCartPriceLabel;
 
     @FXML
     private Label confirmationCartTotalPriceLabel;
@@ -157,6 +157,12 @@ public class Controller implements ShoppingCartListener {
     }
 
     @FXML
+    void shopAgainButtonPushed(ActionEvent evt) {
+        setRightHandView(cartView);
+        shoppingProgressBar.setProgress(0);
+    }
+
+    @FXML
     void saveOrEditButtonPressed(ActionEvent evt) {
         if (saveOrEditButton.getText().equals("Spara")) {
             // saves customer and card information from the fields at infoview
@@ -186,10 +192,10 @@ public class Controller implements ShoppingCartListener {
         setRightHandView(confirmationView);
         // set lists with payment details and shoppingcart for review before purchase
         setPaymentConfirmationListView();
-        setCartConfirmationListView();
+        setCartConfirmationLabels();
 
         shoppingProgressBar.setProgress(0.66);
-        confirmationCartTotalPriceLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " KR");
+        confirmationCartTotalPriceLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + " Kr");
     }
 
     @FXML
@@ -224,9 +230,10 @@ public class Controller implements ShoppingCartListener {
             updateProducts(products);
         }
     }
+
     @FXML
-    void favoriteButtonPushed(ActionEvent evt){
-        updateProducts((ArrayList)IMatDataHandler.getInstance().favorites());
+    void favoriteButtonPushed(ActionEvent evt) {
+        updateProducts((ArrayList) IMatDataHandler.getInstance().favorites());
     }
 
     @FXML
@@ -472,16 +479,13 @@ public class Controller implements ShoppingCartListener {
         }
     }
 
-    private void setCartConfirmationListView() {
-        ObservableList<String> oLNames = FXCollections.observableArrayList();
-        ObservableList<String> oLPrices = FXCollections.observableArrayList();
-
+    private void setCartConfirmationLabels() {
+        confirmationCartPriceLabel.setText("");
+        confirmationCartProductLabel.setText("");
         for (ShoppingItem sI : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
-            oLNames.add(sI.getProduct().getName());
-            oLPrices.add(sI.getTotal() + " KR");
+            confirmationCartPriceLabel.setText(confirmationCartPriceLabel.getText() + sI.getTotal() + " Kr\n");
+            confirmationCartProductLabel.setText(confirmationCartProductLabel.getText() + sI.getProduct().getName() + "\n");
         }
-        confirmationCartProductList.setItems(oLNames);
-        confirmationCartPriceList.setItems(oLPrices);
     }
 
     private void setPaymentConfirmationListView() {

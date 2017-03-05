@@ -124,7 +124,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
     }
 
     private void setProductPrice() {
-        priceLabel.setText(cartItem.getTotal() + " KR");
+        priceLabel.setText(cartItem.getTotal() + " Kr");
     }
 
     private void decimateProductAmount() {
