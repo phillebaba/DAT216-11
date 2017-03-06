@@ -60,8 +60,7 @@ public class ProductViewCell extends HBox {
         assert incrementButton != null : "fx:id=\"incrementButton\" was not injected: check your FXML file 'Product.fxml'.";
         assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file 'Product.fxml'.";
         assert nameLable != null : "fx:id=\"nameLable\" was not injected: check your FXML file 'Product.fxml'.";
-        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'Product.fxml'.";*
-
+        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'Product.fxml'.";
     }
 
     public ProductViewCell() {
@@ -111,7 +110,6 @@ public class ProductViewCell extends HBox {
 
                 List<ShoppingItem> currentItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
                 List<ShoppingItem> duplicates = currentItems.stream().filter(p -> p.getProduct().equals(product)).collect(Collectors.toList());
-                ;
 
                 // The product already exists
                 if (duplicates.size() > 0) {

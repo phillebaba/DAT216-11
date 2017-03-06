@@ -246,7 +246,6 @@ public class Controller implements ShoppingCartListener {
             Pattern pattern = Pattern.compile(regex);
             Predicate<Product> predicate = p -> pattern.matcher(p.getName()).matches();
             List<Product> filter = products.stream().filter(predicate).collect(Collectors.toList());
-            System.out.println(filter.size());
             updateProducts((ArrayList<Product>) filter);
         }
     }
