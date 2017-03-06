@@ -15,12 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-public class ProductViewCell extends AnchorPane {
+public class ProductViewCell extends HBox {
 
     @FXML
     private ResourceBundle resources;
@@ -60,7 +60,7 @@ public class ProductViewCell extends AnchorPane {
         assert incrementButton != null : "fx:id=\"incrementButton\" was not injected: check your FXML file 'Product.fxml'.";
         assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file 'Product.fxml'.";
         assert nameLable != null : "fx:id=\"nameLable\" was not injected: check your FXML file 'Product.fxml'.";
-        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'Product.fxml'.";
+        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'Product.fxml'.";*
 
     }
 
@@ -97,12 +97,12 @@ public class ProductViewCell extends AnchorPane {
             }
         });
 
-        favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
+        /*favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 IMatDataHandler.getInstance().addFavorite(product);
             }
-        });
+        });*/
 
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
