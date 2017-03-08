@@ -104,7 +104,7 @@ public class CartCell extends ListCell<ShoppingItem> {
 
     private void setAmountField(double d) {
         String s = cartItem.getProduct().getUnitSuffix();
-        if (s.equals("st") || s.equals("förp")) {
+        if (s.equals("st") || s.equals("förp") || s.equals("påse")) {
             amountField.setText((int) d + "");
         } else {
             amountField.setText(d + "");
@@ -112,6 +112,7 @@ public class CartCell extends ListCell<ShoppingItem> {
     }
 
     private void incrementProductAmount() {
+        setProductAmount();
         cartItem.setAmount(cartItem.getAmount() + 1);
         IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, true);
     }
@@ -128,7 +129,10 @@ public class CartCell extends ListCell<ShoppingItem> {
     }
 
     private void decimateProductAmount() {
-        cartItem.setAmount(cartItem.getAmount() - 1);
+        setProductAmount();
+        if(cartItem.getAmount()>0){
+            cartItem.setAmount(cartItem.getAmount() - 1);
+        }
         IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, false);
     }
 

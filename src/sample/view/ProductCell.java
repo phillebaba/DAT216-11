@@ -79,13 +79,16 @@ public class ProductCell extends HBox {
         Image image = new Image("file:" + System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName());
         imageView.setImage(image);
         nameLable.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()) + " Kr");
+        priceLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
         amountField.setText("1.0");
 
         subtractButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) - 1));
+                if(Double.valueOf(amountField.getText())>0){
+                    amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) - 1));
+                }
+
             }
         });
 
@@ -116,6 +119,7 @@ public class ProductCell extends HBox {
                     ShoppingItem duplicate = duplicates.get(0);
                     duplicate.setAmount(duplicate.getAmount() + amount);
                     IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(duplicate, false);
+                    amountField.setText("1.0");
                 } else {
                     IMatDataHandler.getInstance().getShoppingCart().addProduct(product, amount);
                     amountField.setText("1.0");
