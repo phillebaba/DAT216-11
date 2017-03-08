@@ -7,6 +7,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import sample.Support;
 import se.chalmers.ait.dat215.project.*;
 import sun.plugin.javascript.navig.Anchor;
 
@@ -44,7 +45,7 @@ public class ReceiptCell extends ListCell<ShoppingItem> {
             }
 
             productLabel.setText(shoppingItem.getProduct().getName());
-            priceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " SEK");
+            priceLabel.setText(String.valueOf(Support.round2(shoppingItem.getTotal())) + " SEK");
             setGraphic(this.rootPane);
         }
     }

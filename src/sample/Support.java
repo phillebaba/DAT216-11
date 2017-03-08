@@ -23,22 +23,22 @@ public class Support {
         DecimalFormat df = new DecimalFormat("#.#",
                 DecimalFormatSymbols.getInstance(Locale.forLanguageTag("en_US")));
         df.setRoundingMode(RoundingMode.HALF_UP);
-        //System.out.println("Before format: " + n);
+        System.out.println("Before format: " + n);
         n = Double.valueOf(df.format(n));
-        //System.out.println("After format: " + n);
+        System.out.println("After format: " + n);
         return n;
 
     }
 
-//    public static double round2(double n){
-//        DecimalFormat df = new DecimalFormat("0.00",
-//                DecimalFormatSymbols.getInstance(Locale.forLanguageTag("en_US")));
-//        df.setRoundingMode(RoundingMode.HALF_UP);
-//        System.out.println("(2)Before format: " + n);
-//        n = Double.valueOf(df.format(n));
-//        System.out.println("(2)After format: " + n);
-//        return n;
-//
-//    }
+    public static double round2(double n){
+        DecimalFormat df = new DecimalFormat("0.00",
+                DecimalFormatSymbols.getInstance(Locale.forLanguageTag("en_US")));
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        System.out.println("(2)Before format: " + n);
+        n = Double.valueOf(df.format(n));
+        System.out.println("(2)After format: " + n);
+        return n;
+
+    }
 
 }
