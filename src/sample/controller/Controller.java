@@ -128,13 +128,12 @@ public class Controller implements ShoppingCartListener {
 
         // Add self as observer of the shopping cart
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
+        IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(null, false);
 
         // Set the initial right hand view
         setRightHandView(cartView);
 
         // Button methods
-
-
         cartView.buyButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
