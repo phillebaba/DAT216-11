@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="399.0" style="-fx-background-color: white;" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="55.0" prefWidth="399.0" stylesheets="@palette.css" text="Köphistorik" VBox.vgrow="NEVER">
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ListView fx:id="shoppingHistoryList" prefHeight="0.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </VBox.margin></ListView>
+   </children>
+</fx:root>

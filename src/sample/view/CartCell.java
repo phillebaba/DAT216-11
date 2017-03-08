@@ -1,4 +1,4 @@
-package sample;
+package sample.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +14,7 @@ import se.chalmers.ait.dat215.project.*;
 
 import java.io.IOException;
 
-public class CartViewCell extends ListCell<ShoppingItem> {
+public class CartCell extends ListCell<ShoppingItem> {
 
     @FXML
     private AnchorPane rootPane;
@@ -47,7 +47,7 @@ public class CartViewCell extends ListCell<ShoppingItem> {
         if (empty || cartItem == null) {
             setGraphic(null);
         } else {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartCell.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/CartCell.fxml"));
             this.cartItem = cartItem;
             fxmlLoader.setController(this);
             try {

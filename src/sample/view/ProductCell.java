@@ -1,4 +1,4 @@
-package sample;
+package sample.view;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +20,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-public class ProductViewCell extends HBox {
+public class ProductCell extends HBox {
 
     @FXML
     private ResourceBundle resources;
@@ -54,17 +54,17 @@ public class ProductViewCell extends HBox {
 
     @FXML
     void initialize() {
-        assert imageView != null : "fx:id=\"imageView\" was not injected: check your FXML file 'Product.fxml'.";
-        assert amountField != null : "fx:id=\"amountField\" was not injected: check your FXML file 'Product.fxml'.";
-        assert subtractButton != null : "fx:id=\"subtractButton\" was not injected: check your FXML file 'Product.fxml'.";
-        assert incrementButton != null : "fx:id=\"incrementButton\" was not injected: check your FXML file 'Product.fxml'.";
-        assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file 'Product.fxml'.";
-        assert nameLable != null : "fx:id=\"nameLable\" was not injected: check your FXML file 'Product.fxml'.";
-        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'Product.fxml'.";
+        /*assert imageView != null : "fx:id=\"imageView\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert amountField != null : "fx:id=\"amountField\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert subtractButton != null : "fx:id=\"subtractButton\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert incrementButton != null : "fx:id=\"incrementButton\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert nameLable != null : "fx:id=\"nameLable\" was not injected: check your FXML file 'ProductCell.fxml'.";
+        assert priceLabel != null : "fx:id=\"priceLabel\" was not injected: check your FXML file 'ProductCell.fxml'.";*/
     }
 
-    public ProductViewCell() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Product.fxml"));
+    public ProductCell() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/ProductCell.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
