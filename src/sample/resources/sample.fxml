@@ -35,7 +35,7 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="searchField" minWidth="150.0" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="283.0" promptText="Sök vara..." style="-fx-background-color: background;" styleClass="light-primary-color" HBox.hgrow="ALWAYS">
+                                    <TextField fx:id="searchField" minWidth="150.0" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="0.0" promptText="Sök vara..." style="-fx-background-color: background;" styleClass="light-primary-color" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -180,7 +180,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: white;">
                      <children>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="517.0" prefWidth="663.0" style="-fx-background-color: white; -fx-fit-to-height: true;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="517.0" prefWidth="663.0" style="-fx-background-color: white; -fx-fit-to-height: true;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
                               <TilePane fx:id="productPane" alignment="TOP_CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" prefColumns="3" prefRows="0" style="-fx-background-color: white;" stylesheets="@palette.css" vgap="10.0">
                                  <padding>

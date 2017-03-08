@@ -3,6 +3,7 @@ package sample.view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  * Created by philiplaine on 2017-03-06.
@@ -80,6 +82,9 @@ public class AccountView extends VBox {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AccountView.fxml'.";
         assert nextButton != null : "fx:id=\"nextButton\" was not injected: check your FXML file 'AccountView.fxml'.";
         assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'AccountView.fxml'.";
+
+        setIsEditing(false);
+        setIsCustomerComplete(false);
     }
 
     public AccountView() {
@@ -102,11 +107,38 @@ public class AccountView extends VBox {
         customerPhonenumberField.setText(customer.getMobilePhoneNumber());
         customerPostCodeField.setText(customer.getPostCode());
         customerPostAddressField.setText(customer.getPostAddress());
-
         cardNumberField.setText(creditCard.getCardNumber());
         cardCVCField.setText(String.valueOf(creditCard.getVerificationCode()));
         cardYearField.setText(String.valueOf(creditCard.getValidYear()));
         cardMonthField.setText(String.valueOf(creditCard.getValidMonth()));
+    }
+
+    private Boolean isEditing = false;
+
+    public Boolean getEditing() {
+        return isEditing;
+    }
+
+    public void setIsEditing(Boolean isEditing) {
+        this.isEditing = isEditing;
+
+        customerFirstNameField.setDisable(!isEditing);
+        customerLastNameField.setDisable(!isEditing);
+        customerPostCodeField.setDisable(!isEditing);
+        customerAddressField.setDisable(!isEditing);
+        customerEmailField.setDisable(!isEditing);
+        customerPhonenumberField.setDisable(!isEditing);
+        cardNumberField.setDisable(!isEditing);
+        cardCVCField.setDisable(!isEditing);
+        cardMonthField.setDisable(!isEditing);
+        cardYearField.setDisable(!isEditing);
+        customerPostAddressField.setDisable(!isEditing);
+
+        saveButton.setText(isEditing ? "Spara" : "Ändra");
+    }
+
+    public void setIsCustomerComplete(Boolean isCustomerComplete) {
+        nextButton.setDisable(!isCustomerComplete);
     }
 
 }

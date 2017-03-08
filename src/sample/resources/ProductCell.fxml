@@ -10,51 +10,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" type="HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" prefHeight="349.0" prefWidth="225.0" spacing="5.0" style="-fx-background-color: white;" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER" prefHeight="349.0" prefWidth="600.0">
+      <HBox alignment="TOP_CENTER" prefHeight="187.0" prefWidth="285.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </HBox>
-            <Label fx:id="nameLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="134.0" style="-fx-text-fill: black;" text="product" textAlignment="CENTER" textFill="WHITE">
+            <ImageView fx:id="imageView" fitHeight="189.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Label fx:id="nameLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="134.0" style="-fx-text-fill: black;" text="product" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="117.0" style="-fx-text-fill: black;" text="price" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="23.0" prefWidth="285.0" spacing="5.0">
+         <children>
+            <Button fx:id="subtractButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="-">
+               <effect>
+                  <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
+               </effect>
                <font>
-                  <Font name="System Italic" size="17.0" />
+                  <Font size="17.0" />
                </font>
-            </Label>
-            <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="117.0" style="-fx-text-fill: black;" text="price" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            </Button>
+            <TextField fx:id="amountField" alignment="CENTER" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font size="17.0" />
                </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="subtractButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="-">
-                     <effect>
-                        <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
-                  <TextField fx:id="amountField" alignment="CENTER" prefHeight="34.0" prefWidth="71.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="incrementButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="+">
-                     <effect>
-                        <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <Button fx:id="addButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="Lägg Till">
+            </TextField>
+            <Button fx:id="incrementButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="+">
                <effect>
                   <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
                </effect>
@@ -63,12 +54,22 @@
                </font>
             </Button>
          </children>
-         <HBox.margin>
-            <Insets bottom="5.0" />
-         </HBox.margin>
-      </VBox>
+      </HBox>
+      <Button fx:id="addButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" stylesheets="@palette.css" text="Lägg Till">
+         <effect>
+            <InnerShadow choke="1.0" color="WHITE" height="6.78" radius="3.4175000000000004" width="8.89" />
+         </effect>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="favoriteButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: clear;">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
    </children>
    <padding>
-      <Insets bottom="5.0" />
+      <Insets bottom="10.0" />
    </padding>
 </fx:root>

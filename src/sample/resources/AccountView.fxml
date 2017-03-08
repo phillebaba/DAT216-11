@@ -21,11 +21,11 @@
             <Insets left="8.0" />
          </VBox.margin>
       </Label>
-      <ScrollPane fitToWidth="true" prefHeight="0.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToWidth="true" prefHeight="0.0" VBox.vgrow="ALWAYS">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+          <AnchorPane>
                <children>
-                  <VBox prefHeight="462.0" prefWidth="388.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label alignment="BOTTOM_LEFT" opacity="0.87" prefHeight="15.0" prefWidth="316.0" text="Personuppgifter:">
                            <font>
@@ -116,13 +116,10 @@
                         </HBox>
                      </children>
                      <padding>
-                        <Insets left="8.0" right="8.0" />
+                        <Insets bottom="10.0" left="8.0" right="8.0" top="10.0" />
                      </padding>
                   </VBox>
                </children>
-               <padding>
-                  <Insets bottom="10.0" top="10.0" />
-               </padding>
             </AnchorPane>
         </content>
          <VBox.margin>
@@ -139,7 +136,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="174.0" style="-fx-background-color: background;" styleClass="accent-color" text="Spara" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="174.0" style="-fx-background-color: background;" styleClass="accent-color" textFill="WHITE" HBox.hgrow="ALWAYS">
                <effect>
                   <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
                </effect>

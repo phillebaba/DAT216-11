@@ -16,11 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
-public class ProductCell extends HBox {
+public class ProductCell extends VBox {
 
     @FXML
     private ResourceBundle resources;
@@ -76,8 +77,7 @@ public class ProductCell extends HBox {
     }
 
     public void updateItem(Product product) {
-        Image image = new Image("file:" + System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName());
-        imageView.setImage(image);
+        imageView.setImage(IMatDataHandler.getInstance().getFXImage(product));
         nameLable.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
         amountField.setText("1.0");
@@ -99,12 +99,12 @@ public class ProductCell extends HBox {
             }
         });
 
-        /*favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
+        favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 IMatDataHandler.getInstance().addFavorite(product);
             }
-        });*/
+        });
 
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override

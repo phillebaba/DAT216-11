@@ -152,29 +152,34 @@ public class Controller implements ShoppingCartListener {
         accountView.saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                IMatDataHandler.getInstance().getCustomer().setFirstName(accountView.customerFirstNameField.getText());
-                IMatDataHandler.getInstance().getCustomer().setLastName(accountView.customerLastNameField.getText());
-                IMatDataHandler.getInstance().getCustomer().setEmail(accountView.customerEmailField.getText());
-                IMatDataHandler.getInstance().getCustomer().setAddress(accountView.customerAddressField.getText());
-                IMatDataHandler.getInstance().getCustomer().setPhoneNumber(accountView.customerPhonenumberField.getText());
-                IMatDataHandler.getInstance().getCustomer().setPostCode(accountView.customerPostCodeField.getText());
-                IMatDataHandler.getInstance().getCustomer().setPostAddress(accountView.customerPostAddressField.getText());
+                if (accountView.getEditing()) {
+                    IMatDataHandler.getInstance().getCustomer().setFirstName(accountView.customerFirstNameField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setLastName(accountView.customerLastNameField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setEmail(accountView.customerEmailField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setAddress(accountView.customerAddressField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setPhoneNumber(accountView.customerPhonenumberField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setPostCode(accountView.customerPostCodeField.getText());
+                    IMatDataHandler.getInstance().getCustomer().setPostAddress(accountView.customerPostAddressField.getText());
 
-                // Cardholder name is read from customer name fields
-                IMatDataHandler.getInstance().getCreditCard().setHoldersName(accountView.customerFirstNameField.getText() + " " + accountView.customerLastNameField.getText());
-                IMatDataHandler.getInstance().getCreditCard().setCardNumber(accountView.cardNumberField.getText());
-                IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(accountView.cardCVCField.getText()));
-                IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(accountView.cardMonthField.getText()));
-                IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(accountView.cardYearField.getText()));
+                    // Cardholder name is read from customer name fields
+                    IMatDataHandler.getInstance().getCreditCard().setHoldersName(accountView.customerFirstNameField.getText() + " " + accountView.customerLastNameField.getText());
+                    IMatDataHandler.getInstance().getCreditCard().setCardNumber(accountView.cardNumberField.getText());
+                    IMatDataHandler.getInstance().getCreditCard().setVerificationCode(Integer.parseInt(accountView.cardCVCField.getText()));
+                    IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(accountView.cardMonthField.getText()));
+                    IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(accountView.cardYearField.getText()));
 
-                char[] digits = accountView.cardNumberField.getText().toCharArray();
-                if (digits[0] == '4') {
-                    IMatDataHandler.getInstance().getCreditCard().setCardType("VISA");
-                } else if (digits[0] == '5' && digits[1] < '6') {
-                    IMatDataHandler.getInstance().getCreditCard().setCardType("MasterCard");
-                } else {
-                    IMatDataHandler.getInstance().getCreditCard().setCardType("Unknown");
+                    char[] digits = accountView.cardNumberField.getText().toCharArray();
+                    if (digits[0] == '4') {
+                        IMatDataHandler.getInstance().getCreditCard().setCardType("VISA");
+                    } else if (digits[0] == '5' && digits[1] < '6') {
+                        IMatDataHandler.getInstance().getCreditCard().setCardType("MasterCard");
+                    } else {
+                        IMatDataHandler.getInstance().getCreditCard().setCardType("Unknown");
+                    }
                 }
+
+                accountView.setIsEditing(!accountView.getEditing());
+                accountView.setIsCustomerComplete(IMatDataHandler.getInstance().isCustomerComplete());
             }
         });
 
@@ -255,6 +260,11 @@ public class Controller implements ShoppingCartListener {
         setRightHandView(accountView);
     }
 
+
+
+
+
+
     private ObservableList<ShoppingItem> cartItemObservableList;
     private HashMap<Button, List<ProductCategory>> productMap;
     private HistoryView historyView = new HistoryView();
@@ -262,6 +272,11 @@ public class Controller implements ShoppingCartListener {
     private CartView cartView = new CartView();
     private CompletionView completionView = new CompletionView();
     private ConfirmationView confirmationView = new ConfirmationView();
+
+
+
+
+
 
     public void shoppingCartChanged(CartEvent cartEvent) {
         // Read all items from the shopping cart and add to observable list
@@ -280,6 +295,8 @@ public class Controller implements ShoppingCartListener {
         cartView.buyButton.setDisable(isCartEmpty);
     }
 
+
+
     /**
      * Changes the content in the right pane.
      *
@@ -291,7 +308,9 @@ public class Controller implements ShoppingCartListener {
         if (pane == accountView) {
             accountView.configureView(instance.getCustomer(), instance.getCreditCard());
         } else if (pane == confirmationView) {
-            confirmationView.configureView(instance.getShoppingCart().getItems(), instance.getCustomer(), instance.getCreditCard());
+            confirmationView.configureView(instance.getShoppingCart(), instance.getCustomer(), instance.getCreditCard());
+        } else if (pane == historyView) {
+            historyView.configureView(IMatDataHandler.getInstance().getOrders());
         }
 
         rightPane.getChildren().clear();

@@ -7,12 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 
 /**
  * Created by philiplaine on 2017-03-06.
  */
-public class CompletionView extends AnchorPane {
+public class CompletionView extends VBox {
     @FXML
     private ResourceBundle resources;
 

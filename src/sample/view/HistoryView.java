@@ -2,6 +2,7 @@ package sample.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -30,15 +31,17 @@ public class HistoryView extends VBox {
     @FXML
     void initialize() {
         assert shoppingHistoryList != null : "fx:id=\"shoppingHistoryList\" was not injected: check your FXML file 'HistoryView.fxml'.";
+    }
 
+    public void configureView(List<Order> orderList) {
         ObservableList<String> orders = FXCollections.observableArrayList();
 
         // List previous orders as date + price
-        for (Order order : IMatDataHandler.getInstance().getOrders()) {
+        for (Order order : orderList) {
             double orderTotal = 0;
             // Get total sum of all products
-            for (ShoppingItem sI : order.getItems()) {
-                orderTotal = orderTotal + sI.getTotal();
+            for (ShoppingItem shoppingItem : order.getItems()) {
+                orderTotal = orderTotal + shoppingItem.getTotal();
             }
 
             orders.add(order.getDate() + "  " + orderTotal + " SEK");

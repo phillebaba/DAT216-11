@@ -13,16 +13,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.ait.dat215.project.CreditCard;
-import se.chalmers.ait.dat215.project.Customer;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import javafx.scene.layout.VBox;
+import se.chalmers.ait.dat215.project.*;
 
 /**
  * Created by philiplaine on 2017-03-06.
  */
-public class ConfirmationView extends AnchorPane {
+public class ConfirmationView extends VBox {
     @FXML
     private ResourceBundle resources;
 
@@ -30,10 +29,13 @@ public class ConfirmationView extends AnchorPane {
     private URL location;
 
     @FXML
-    private Label confirmationCartProductLabel;
+    private ListView<String> cartListView;
 
     @FXML
-    private Label confirmationCartPriceLabel;
+    private Label totalLabel;
+
+    @FXML
+    private ListView<String> confirmationPaymentInfoList;
 
     @FXML
     public Button confirmButton;
@@ -42,19 +44,8 @@ public class ConfirmationView extends AnchorPane {
     public Button backButton;
 
     @FXML
-    private ListView<String> confirmationPaymentInfoList;
-
-    @FXML
-    private Label confirmationCartTotalPriceLabel;
-
-    @FXML
     void initialize() {
-        assert confirmationCartProductLabel != null : "fx:id=\"confirmationCartProductLabel\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
-        assert confirmationCartPriceLabel != null : "fx:id=\"confirmationCartPriceLabel\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
-        assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
-        assert confirmationPaymentInfoList != null : "fx:id=\"confirmationPaymentInfoList\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
-        assert confirmationCartTotalPriceLabel != null : "fx:id=\"confirmationCartTotalPriceLabel\" was not injected: check your FXML file 'ConfirmationView.fxml'.";
+
 
     }
 
@@ -70,16 +61,20 @@ public class ConfirmationView extends AnchorPane {
         }
     }
 
-    public void configureView(List<ShoppingItem> shoppingItemList, Customer customer, CreditCard creditCard) {
+    public void configureView(ShoppingCart shoppingCart, Customer customer, CreditCard creditCard) {
         // Clear the current text
-        confirmationCartPriceLabel.setText("");
+        /*confirmationCartPriceLabel.setText("");
         confirmationCartProductLabel.setText("");
+
 
         // Set the new values
         for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
             confirmationCartPriceLabel.setText(confirmationCartPriceLabel.getText() + shoppingItem.getTotal() + " SEK\n");
             confirmationCartProductLabel.setText(confirmationCartProductLabel.getText() + shoppingItem.getProduct().getName() + "\n");
-        }
+        }*/
+
+
+        totalLabel.setText("Totalbelopp: " + String.format("%.2f", shoppingCart.getTotal()) + " SEK");
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.add(IMatDataHandler.getInstance().getCustomer().getFirstName() + " " + IMatDataHandler.getInstance().getCustomer().getLastName());
