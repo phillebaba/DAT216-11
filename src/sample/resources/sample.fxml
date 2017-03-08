@@ -20,24 +20,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.6389684813753582" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: white;" stylesheets="@palette.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<SplitPane dividerPositions="0.6389684813753582" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="746.0" prefWidth="1052.0" style="-fx-background-color: white;" stylesheets="@palette.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
          <children>
             <SplitPane dividerPositions="0.2349799732977303" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: white;" styleClass="default-primary-color">
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: background;" styleClass="light-primary-color">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
                                  <children>
                                     <Label opacity="0.87" prefHeight="45.0" prefWidth="68.0" text="iMat">
                                        <font>
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="searchField" minWidth="150.0" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="0.0" promptText="Sök vara..." style="-fx-background-color: background;" styleClass="light-primary-color" HBox.hgrow="ALWAYS">
+                                    <TextField fx:id="searchField" minWidth="150.0" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="0.0" promptText="Sök vara..." style="-fx-background-color: white;" styleClass="light-primary-color" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -198,7 +198,7 @@
                      <children>
                         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="517.0" prefWidth="663.0" style="-fx-background-color: white; -fx-fit-to-height: true;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <TilePane fx:id="productPane" alignment="TOP_CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" prefColumns="3" prefRows="0" style="-fx-background-color: white;" stylesheets="@palette.css" vgap="10.0">
+                              <TilePane fx:id="productPane" alignment="TOP_CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" prefColumns="3" prefRows="0" style="-fx-background-color: ;" styleClass="light-primary-color" stylesheets="@palette.css" vgap="10.0">
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
@@ -214,7 +214,7 @@
          <children>
             <SplitPane dividerPositions="0.1321762349799733" layoutX="109.0" layoutY="51.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                  <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0" style="-fx-background-color: white;">
+                  <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0" style="-fx-background-color: background;" styleClass="light-primary-color">
                      <children>
                         <GridPane prefHeight="69.0" prefWidth="398.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                           <columnConstraints>

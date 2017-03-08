@@ -22,12 +22,12 @@
          <VBox.margin>
             <Insets left="5.0" right="5.0" />
          </VBox.margin></ListView>
-      <Button fx:id="buyButton" disable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Kassa" VBox.vgrow="ALWAYS">
+      <Button fx:id="buyButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Kassa" VBox.vgrow="ALWAYS">
          <effect>
-            <InnerShadow choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+            <InnerShadow choke="0.1" color="#b98620" height="90.19" radius="43.04" width="83.97" />
          </effect>
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
       </Button>
    </children>
