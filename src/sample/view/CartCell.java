@@ -10,9 +10,11 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import sample.Support;
 import se.chalmers.ait.dat215.project.*;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class CartCell extends ListCell<ShoppingItem> {
 
@@ -103,36 +105,52 @@ public class CartCell extends ListCell<ShoppingItem> {
     }
 
     private void setAmountField(double d) {
-        String s = cartItem.getProduct().getUnitSuffix();
-        if (s.equals("st") || s.equals("förp") || s.equals("påse")) {
+        if (!Support.isDivisible(cartItem.getProduct())) {
             amountField.setText((int) d + "");
         } else {
-            amountField.setText(d + "");
+            amountField.setText(String.valueOf(Support.round(d)));
+
         }
+
     }
 
     private void incrementProductAmount() {
         setProductAmount();
-        cartItem.setAmount(cartItem.getAmount() + 1);
+        if(Support.isDivisible(cartItem.getProduct()) && cartItem.getAmount()<1){
+            cartItem.setAmount(Support.round(cartItem.getAmount() + 0.1));
+        }else{
+            cartItem.setAmount(cartItem.getAmount() + 1);
+        }
+
         IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, true);
     }
 
     private void setProductAmount() {
         if (isNumeric(amountField.getText())) {
-            cartItem.setAmount(Integer.parseInt(amountField.getText()));
+            if(Support.isDivisible(cartItem.getProduct())){
+                cartItem.setAmount(Double.valueOf(amountField.getText()));
+            }else{
+                cartItem.setAmount(Integer.parseInt(amountField.getText()));
+            }
+
             IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, false); // todo need to check if increase
         }
     }
 
     private void setProductPrice() {
-        priceLabel.setText(cartItem.getTotal() + " Kr");
+        priceLabel.setText(Support.round(cartItem.getTotal())+ " Kr");
     }
 
     private void decimateProductAmount() {
         setProductAmount();
-        if(cartItem.getAmount()>0){
+        if(Support.isDivisible(cartItem.getProduct()) && cartItem.getAmount()<=1 && cartItem.getAmount()>0.1){
+            cartItem.setAmount(Support.round(cartItem.getAmount() - 0.1));
+            //cartItem.setAmount(Double.parseDouble(String.format(Locale.ENGLISH,"%1$,.1f", cartItem.getAmount() - 0.1)));
+        }else if(cartItem.getAmount()>1){
             cartItem.setAmount(cartItem.getAmount() - 1);
         }
+
+        // Force update of the cart cell
         IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(cartItem, false);
     }
 

@@ -3,6 +3,7 @@ package sample.view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import sample.Support;
 import javafx.scene.layout.VBox;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -80,14 +82,25 @@ public class ProductCell extends VBox {
         imageView.setImage(IMatDataHandler.getInstance().getFXImage(product));
         nameLable.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
-        amountField.setText("1.0");
+        if(Support.isDivisible(product)){
+            amountField.setText("1.0");
+        }else{
+            amountField.setText("1");
+        }
 
         subtractButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(Double.valueOf(amountField.getText())>0){
-                    amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) - 1));
+                if(Support.isDivisible(product)){
+                    if(Double.valueOf(amountField.getText())>1){
+                        amountField.setText(String.valueOf(Support.round(Double.valueOf(amountField.getText())-1)));
+                    }else if(Double.valueOf(amountField.getText())>0.1){
+                        amountField.setText(String.valueOf(Support.round(Double.valueOf(amountField.getText())-0.1)));
+                    }
+                }else{
+                    amountField.setText(String.valueOf(Integer.valueOf(amountField.getText())-1));
                 }
+
 
             }
         });
@@ -95,7 +108,17 @@ public class ProductCell extends VBox {
         incrementButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) + 1));
+                if(Support.isDivisible(product)){
+                    if(Double.valueOf(amountField.getText())<1){
+                        amountField.setText(String.valueOf(Support.round(Double.valueOf(amountField.getText()) + 0.1)));
+                    }else{
+                        amountField.setText(String.valueOf(Double.valueOf(amountField.getText()) + 1));
+                    }
+                }else{
+                    amountField.setText(String.valueOf(Integer.valueOf(amountField.getText())+1));
+                }
+
+
             }
         });
 
@@ -119,10 +142,19 @@ public class ProductCell extends VBox {
                     ShoppingItem duplicate = duplicates.get(0);
                     duplicate.setAmount(duplicate.getAmount() + amount);
                     IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(duplicate, false);
-                    amountField.setText("1.0");
+                    if(Support.isDivisible(product)){
+                        amountField.setText("1.0");
+                    }else{
+                        amountField.setText("1");
+                    }
+
                 } else {
                     IMatDataHandler.getInstance().getShoppingCart().addProduct(product, amount);
-                    amountField.setText("1.0");
+                    if(Support.isDivisible(product)){
+                        amountField.setText("1.0");
+                    }else{
+                        amountField.setText("1");
+                    }
                 }
             }
         });
