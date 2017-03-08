@@ -1,9 +1,14 @@
 package sample.view;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -83,9 +88,32 @@ public class AccountView extends VBox {
         assert nextButton != null : "fx:id=\"nextButton\" was not injected: check your FXML file 'AccountView.fxml'.";
         assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'AccountView.fxml'.";
 
-        setIsEditing(false);
-        setIsCustomerComplete(false);
+        checkComplete();
+        ChangeListener<String> changeListener = new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                checkComplete();
+            }
+        };
+
+        customerFirstNameField.textProperty().addListener(changeListener);
+        customerLastNameField.textProperty().addListener(changeListener);
+        customerPostCodeField.textProperty().addListener(changeListener);
+        customerAddressField.textProperty().addListener(changeListener);
+        customerEmailField.textProperty().addListener(changeListener);
+        customerPhonenumberField.textProperty().addListener(changeListener);
+        cardNumberField.textProperty().addListener(changeListener);
+        cardCVCField.textProperty().addListener(changeListener);
+        cardMonthField.textProperty().addListener(changeListener);
+        cardYearField.textProperty().addListener(changeListener);
+        customerPostAddressField.textProperty().addListener(changeListener);
     }
+
+    private void checkComplete() {
+        Boolean complete = customerFirstNameField.getText().length() > 0 && customerLastNameField.getText().length() > 0 &&  customerPostCodeField.getText().length() > 0 && customerAddressField.getText().length() > 0 && customerEmailField.getText().length() > 0 && customerPhonenumberField.getText().length() > 0 && cardNumberField.getText().length() > 0 && cardCVCField.getText().length() > 0 && cardMonthField.getText().length() > 0 && cardYearField.getText().length() > 0 && customerPostAddressField.getText().length() > 0;
+        nextButton.setDisable(!complete);
+    }
+
 
     public AccountView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/AccountView.fxml"));
@@ -104,7 +132,7 @@ public class AccountView extends VBox {
         customerLastNameField.setText(customer.getLastName());
         customerAddressField.setText(customer.getAddress());
         customerEmailField.setText(customer.getEmail());
-        customerPhonenumberField.setText(customer.getMobilePhoneNumber());
+        customerPhonenumberField.setText(customer.getPhoneNumber());
         customerPostCodeField.setText(customer.getPostCode());
         customerPostAddressField.setText(customer.getPostAddress());
         cardNumberField.setText(creditCard.getCardNumber());
@@ -140,5 +168,7 @@ public class AccountView extends VBox {
     public void setIsCustomerComplete(Boolean isCustomerComplete) {
         nextButton.setDisable(!isCustomerComplete);
     }
+
+
 
 }

@@ -60,7 +60,7 @@
       </Label>
       <HBox prefHeight="65.0" prefWidth="305.0">
          <children>
-            <Button fx:id="backButton" minHeight="71.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="132.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Tillbaka">
+            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Tillbaka" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="17.0" />
                </font>
@@ -68,7 +68,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.13" radius="5.532500000000001" width="12.0" />
                </effect>
             </Button>
-            <Button fx:id="confirmButton" minHeight="71.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="243.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Bekräfta">
+            <Button fx:id="confirmButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Bekräfta" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="17.0" />
                </font>

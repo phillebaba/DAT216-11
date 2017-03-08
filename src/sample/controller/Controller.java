@@ -133,21 +133,20 @@ public class Controller implements ShoppingCartListener {
         // Set the initial right hand view
         setRightHandView(cartView);
 
-        // Button methods
+        // Cart View
         cartView.buyButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                setRightHandView(accountView);
+                setRightHandView(deliveryView);
             }
         });
 
-        accountView.backButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                setRightHandView(cartView);
-            }
-        });
-
+        // Account View
+        accountView.setIsEditing(false);
+        accountView.backButton.setVisible(false);
+        accountView.backButton.setManaged(false);
+        accountView.nextButton.setVisible(false);
+        accountView.nextButton.setManaged(false);
         accountView.saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -182,13 +181,26 @@ public class Controller implements ShoppingCartListener {
             }
         });
 
-        accountView.nextButton.setOnAction(new EventHandler<ActionEvent>() {
+        // Delivery View Buttons
+        deliveryView.setIsEditing(true);
+        deliveryView.setIsCustomerComplete(false);
+        deliveryView.saveButton.setVisible(false);
+        deliveryView.saveButton.setManaged(false);
+        deliveryView.backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setRightHandView(cartView);
+            }
+        });
+
+        deliveryView.nextButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 setRightHandView(confirmationView);
             }
         });
 
+        // Confirmation View Buttons
         confirmationView.backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -204,13 +216,13 @@ public class Controller implements ShoppingCartListener {
             }
         });
 
+        // Completion View Buttons
         completionView.doneButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 setRightHandView(cartView);
             }
         });
-
     }
 
     @FXML
@@ -268,6 +280,7 @@ public class Controller implements ShoppingCartListener {
     private HashMap<Button, List<ProductCategory>> productMap;
     private HistoryView historyView = new HistoryView();
     private AccountView accountView = new AccountView();
+    private AccountView deliveryView = new AccountView();
     private CartView cartView = new CartView();
     private CompletionView completionView = new CompletionView();
     private ConfirmationView confirmationView = new ConfirmationView();
@@ -306,6 +319,8 @@ public class Controller implements ShoppingCartListener {
 
         if (pane == accountView) {
             accountView.configureView(instance.getCustomer(), instance.getCreditCard());
+        } else if (pane == deliveryView) {
+            deliveryView.configureView(instance.getCustomer(), instance.getCreditCard());
         } else if (pane == confirmationView) {
             confirmationView.configureView(instance.getShoppingCart(), instance.getCustomer(), instance.getCreditCard());
         } else if (pane == historyView) {
