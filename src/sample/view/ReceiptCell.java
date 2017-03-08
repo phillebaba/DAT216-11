@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import se.chalmers.ait.dat215.project.*;
 import sun.plugin.javascript.navig.Anchor;
 
@@ -14,7 +15,7 @@ import java.io.IOException;
 public class ReceiptCell extends ListCell<ShoppingItem> {
 
     @FXML
-    private GridPane rootPane;
+    private HBox rootPane;
     @FXML
     private Label productLabel;
     @FXML
