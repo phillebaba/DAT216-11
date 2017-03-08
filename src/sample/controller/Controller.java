@@ -167,16 +167,14 @@ public class Controller implements ShoppingCartListener {
                 IMatDataHandler.getInstance().getCreditCard().setValidMonth(Integer.parseInt(accountView.cardMonthField.getText()));
                 IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(accountView.cardYearField.getText()));
 
-                /*List<Integer> digits = accountView.cardNumberField.getText().chars().map(c -> Integer.parseInt(String.valueOf(c))).collect(Collectors.toList());
-                if (digits.get(0) == 4) {
+                char[] digits = accountView.cardNumberField.getText().toCharArray();
+                if (digits[0] == '4') {
                     IMatDataHandler.getInstance().getCreditCard().setCardType("VISA");
-                } else if (digits.get(0) == 5 && digits.get(1) < 6) {
+                } else if (digits[0] == '5' && digits[1] < '6') {
                     IMatDataHandler.getInstance().getCreditCard().setCardType("MasterCard");
                 } else {
                     IMatDataHandler.getInstance().getCreditCard().setCardType("Unknown");
                 }
-
-                System.out.println(IMatDataHandler.getInstance().getCreditCard().getCardType());*/
             }
         });
 
