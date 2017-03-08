@@ -2,6 +2,7 @@ package sample.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,8 +37,12 @@ public class HistoryView extends VBox {
     public void configureView(List<Order> orderList) {
         ObservableList<String> orders = FXCollections.observableArrayList();
 
+        // Run backwards to get the newest first
+        List<Order> reversed = orderList.subList(0, orderList.size());
+        Collections.reverse(reversed);
+
         // List previous orders as date + price
-        for (Order order : orderList) {
+        for (Order order : reversed) {
             double orderTotal = 0;
             // Get total sum of all products
             for (ShoppingItem shoppingItem : order.getItems()) {

@@ -68,9 +68,9 @@ public class ConfirmationView extends VBox {
 
         totalLabel.setText("Totalbelopp: " + String.format("%.2f", shoppingCart.getTotal()) + " SEK");
 
-        nameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
-        adressLabel.setText(customer.getAddress());
-        cardLabel.setText(creditCard.getCardType() + " " + creditCard.getCardNumber());
+        nameLabel.setText("Namn: " + customer.getFirstName() + " " + customer.getLastName());
+        adressLabel.setText("Adress: " + customer.getAddress());
+        cardLabel.setText("Kort: " + creditCard.getCardType() + " " + creditCard.getCardNumber());
     }
 
 }

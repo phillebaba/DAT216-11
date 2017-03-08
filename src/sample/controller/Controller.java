@@ -204,7 +204,7 @@ public class Controller implements ShoppingCartListener {
         confirmationView.backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                setRightHandView(accountView);
+                setRightHandView(deliveryView);
             }
         });
 
