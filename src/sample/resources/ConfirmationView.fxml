@@ -19,7 +19,7 @@
             <Insets left="8.0" />
          </padding>
       </Label>
-      <ListView fx:id="cartListView" prefHeight="0.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <ListView fx:id="receiptList" prefHeight="0.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets left="5.0" right="5.0" />
          </VBox.margin>
@@ -43,10 +43,21 @@
             <Insets left="8.0" />
          </padding>
       </Label>
-      <ListView fx:id="confirmationPaymentInfoList" focusTraversable="false" prefHeight="0.0" prefWidth="332.0" VBox.vgrow="ALWAYS">
+      <Label fx:id="nameLabel" prefHeight="25.0" prefWidth="277.0" text="Namn">
          <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" />
-         </VBox.margin></ListView>
+            <Insets left="8.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="adressLabel" prefHeight="25.0" prefWidth="280.0" text="Adress">
+         <VBox.margin>
+            <Insets left="8.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="cardLabel" prefHeight="25.0" prefWidth="283.0" text="Card">
+         <VBox.margin>
+            <Insets left="8.0" />
+         </VBox.margin>
+      </Label>
       <HBox prefHeight="65.0" prefWidth="305.0">
          <children>
             <Button fx:id="backButton" minHeight="71.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="132.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Tillbaka">
@@ -66,6 +77,9 @@
                </effect>
             </Button>
          </children>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
       </HBox>
    </children>
 </fx:root>

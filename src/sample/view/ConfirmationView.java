@@ -24,29 +24,26 @@ import se.chalmers.ait.dat215.project.*;
 public class ConfirmationView extends VBox {
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
-    private ListView<String> cartListView;
-
+    private ListView<ShoppingItem> receiptList;
     @FXML
     private Label totalLabel;
-
     @FXML
-    private ListView<String> confirmationPaymentInfoList;
-
+    private Label nameLabel;
+    @FXML
+    private Label adressLabel;
+    @FXML
+    private Label cardLabel;
     @FXML
     public Button confirmButton;
-
     @FXML
     public Button backButton;
 
     @FXML
     void initialize() {
-
-
+        receiptList.setCellFactory(cartListView -> new ReceiptCell());
     }
 
     public ConfirmationView() {
@@ -62,25 +59,17 @@ public class ConfirmationView extends VBox {
     }
 
     public void configureView(ShoppingCart shoppingCart, Customer customer, CreditCard creditCard) {
-        // Clear the current text
-        /*confirmationCartPriceLabel.setText("");
-        confirmationCartProductLabel.setText("");
-
-
-        // Set the new values
-        for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
-            confirmationCartPriceLabel.setText(confirmationCartPriceLabel.getText() + shoppingItem.getTotal() + " SEK\n");
-            confirmationCartProductLabel.setText(confirmationCartProductLabel.getText() + shoppingItem.getProduct().getName() + "\n");
-        }*/
-
+        // Add all items to shopping cart list
+        ObservableList<ShoppingItem> observableShoppingItems = FXCollections.observableArrayList();
+        observableShoppingItems.addAll(shoppingCart.getItems());
+        receiptList.setItems(observableShoppingItems);
+        receiptList.refresh();
 
         totalLabel.setText("Totalbelopp: " + String.format("%.2f", shoppingCart.getTotal()) + " SEK");
 
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.add(IMatDataHandler.getInstance().getCustomer().getFirstName() + " " + IMatDataHandler.getInstance().getCustomer().getLastName());
-        observableList.add(IMatDataHandler.getInstance().getCreditCard().getCardType() + " " + IMatDataHandler.getInstance().getCreditCard().getCardNumber());
-        observableList.add(IMatDataHandler.getInstance().getCustomer().getAddress());
-        confirmationPaymentInfoList.setItems(observableList);
+        nameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
+        adressLabel.setText(customer.getAddress());
+        cardLabel.setText(creditCard.getCardType() + " " + creditCard.getCardNumber());
     }
 
 }
