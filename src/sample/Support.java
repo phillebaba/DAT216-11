@@ -41,4 +41,15 @@ public class Support {
 
     }
 
+    public static double round3(double n){
+        DecimalFormat df = new DecimalFormat("0",
+                DecimalFormatSymbols.getInstance(Locale.forLanguageTag("en_US")));
+        df.setRoundingMode(RoundingMode.FLOOR);
+        //System.out.println("(2)Before format: " + n);
+        n = Double.valueOf(df.format(n));
+        //System.out.println("(2)After format: " + n);
+        return n;
+
+    }
+
 }

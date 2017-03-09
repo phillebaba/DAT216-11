@@ -146,7 +146,13 @@ public class ProductCell extends VBox {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Double amount = Double.valueOf(amountField.getText());
+
+                Double amount;
+                if(Support.isDivisible(product)){
+                    amount = Support.round(Double.valueOf(amountField.getText()));
+                }else{
+                    amount = Support.round3(Double.valueOf(amountField.getText()));
+                }
 
                 List<ShoppingItem> currentItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
                 List<ShoppingItem> duplicates = currentItems.stream().filter(p -> p.getProduct().equals(product)).collect(Collectors.toList());
