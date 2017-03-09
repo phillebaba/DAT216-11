@@ -30,7 +30,6 @@
 
 .split-pane > .split-pane-divider {  
  -fx-padding: 0 0.00em 0 0.00em;      
-/*-fx-padding: 0 0.004em 0 0.004em;*/  
     -fx-background-color: #009688;
     -fx-opacity: 0.83;  
 }
@@ -40,5 +39,4 @@
 #account .viewport { -fx-background-color: #B2DFDB; }
 
 .scroll-pane > .scroll-bar  { -fx-background-color: white; }
-.scroll-pane > .scroll-bar:vertical .thumb {-fx-background-color: lightgray/*#00796B*/; }
-/* #ff5722*/
+.scroll-pane > .scroll-bar:vertical .thumb {-fx-background-color: lightgray; }

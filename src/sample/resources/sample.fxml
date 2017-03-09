@@ -111,7 +111,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="fruitButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Frukt">
+                                    <Button fx:id="fruitButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Frukt">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -126,7 +126,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="dairyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
+                                    <Button fx:id="dairyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -141,7 +141,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="drinksButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Drycker" GridPane.columnIndex="1">
+                                    <Button fx:id="drinksButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Drycker" GridPane.columnIndex="1">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -156,7 +156,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="sweetButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="sweetButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -171,7 +171,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="meatButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Kött och Fisk" GridPane.columnIndex="2">
+                                    <Button fx:id="meatButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Kött och Fisk" GridPane.columnIndex="2">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -186,7 +186,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="pantryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Skafferi" GridPane.columnIndex="3">
+                                    <Button fx:id="pantryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Skafferi" GridPane.columnIndex="3">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -201,7 +201,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="breadButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Button fx:id="breadButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
@@ -216,7 +216,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="vegetableButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                    <Button fx:id="vegetableButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryButtonPushed" opacity="0.65" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.035" radius="5.50875" width="12.0" />
                                        </effect>
@@ -269,7 +269,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="historyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#historyPushed" opacity="0.5" prefHeight="126.0" prefWidth="151.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Historik" GridPane.columnIndex="1">
+                              <Button fx:id="historyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#historyPushed" opacity="0.65" prefHeight="126.0" prefWidth="151.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Historik" GridPane.columnIndex="1">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                  </effect>
@@ -303,7 +303,7 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Button>
-                              <Button fx:id="accountButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#accountPushed" opacity="0.5" prefHeight="80.0" prefWidth="153.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Konto" GridPane.columnIndex="2">
+                              <Button fx:id="accountButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#accountPushed" opacity="0.65" prefHeight="80.0" prefWidth="153.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Konto" GridPane.columnIndex="2">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                  </effect>
