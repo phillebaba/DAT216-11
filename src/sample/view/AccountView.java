@@ -136,7 +136,7 @@ public class AccountView extends VBox {
         customerPostCodeField.setText(customer.getPostCode());
         customerPostAddressField.setText(customer.getPostAddress());
         cardNumberField.setText(creditCard.getCardNumber());
-        cardCVCField.setText(String.valueOf(creditCard.getVerificationCode()));
+        //cardCVCField.setText(String.valueOf(creditCard.getVerificationCode()));
         cardYearField.setText(String.valueOf(creditCard.getValidYear()));
         cardMonthField.setText(String.valueOf(creditCard.getValidMonth()));
     }

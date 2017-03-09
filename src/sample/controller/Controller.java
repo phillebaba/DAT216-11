@@ -158,6 +158,7 @@ public class Controller implements ShoppingCartListener {
         accountView.backButton.setManaged(false);
         accountView.nextButton.setVisible(false);
         accountView.nextButton.setManaged(false);
+        accountView.cardCVCField.setVisible(false);
         accountView.saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

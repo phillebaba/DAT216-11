@@ -133,18 +133,16 @@
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
                               </TextField>
-                              <Label prefHeight="34.0" prefWidth="4.0" text="-" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="cardCVCField" prefHeight="34.0" prefWidth="55.0" promptText="XXX" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
+                              <TextField fx:id="cardCVCField" prefHeight="34.0" prefWidth="60.0" promptText="CVC" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </TextField>
                            </children>
                         </HBox>
