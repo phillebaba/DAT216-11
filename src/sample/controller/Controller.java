@@ -138,13 +138,6 @@ public class Controller implements ShoppingCartListener {
         productMap.put(breadButton, breadList);
         productMap.put(vegetableButton, vegetableList);
 
-        // Add self as observer of the shopping cart
-        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
-        IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(null, false);
-
-        // Set the initial right hand view
-        setRightHandView(cartView);
-
         // Cart View
         cartView.buyButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -237,6 +230,16 @@ public class Controller implements ShoppingCartListener {
                 setRightHandView(cartView);
             }
         });
+
+        // Add self as observer of the shopping cart
+        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
+        IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(null, false);
+
+        // Set the initial right hand view
+        setRightHandView(cartView);
+
+        // Set the initial category
+        fruitButton.fire();
     }
 
     @FXML
