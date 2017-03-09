@@ -1,5 +1,6 @@
 package sample.view;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -85,7 +86,7 @@ public class ProductCell extends VBox {
         imageView.setImage(IMatDataHandler.getInstance().getFXImage(product));
         nameLable.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
-        //setFavoriteIcon(IMatDataHandler.getInstance().isFavorite(product));
+        setFavoriteIcon(IMatDataHandler.getInstance().isFavorite(product));
         if (Support.isDivisible(product)){
             amountField.setText("1.0");
         } else{
@@ -137,6 +138,8 @@ public class ProductCell extends VBox {
                 } else {
                     IMatDataHandler.getInstance().removeFavorite(product);
                 }
+
+                setFavoriteIcon(IMatDataHandler.getInstance().isFavorite(product));
             }
         });
 
@@ -172,9 +175,8 @@ public class ProductCell extends VBox {
     }
 
     private void setFavoriteIcon(Boolean favorited) {
-
-        favoriteImageView.setImage(new Image("file:favorite_border.png"));
+        String fileName = favorited ? "../resources/favorite_fill.png" : "../resources/favorite_border.png";
+        favoriteImageView.setImage(new Image(getClass().getResourceAsStream(fileName)));
     }
-
 
 }
