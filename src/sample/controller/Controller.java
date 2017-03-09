@@ -19,7 +19,6 @@ import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
 import sample.view.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -74,6 +73,9 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     private Button cartButton;
+
+    @FXML
+    private Button favoriteButtonTop;
 
     @FXML
     void initialize() {
@@ -256,6 +258,8 @@ public class Controller implements ShoppingCartListener {
         vegetableButton.setOpacity(0.65);
         breadButton.setOpacity(0.65);
         drinksButton.setOpacity(0.65);
+        favoriteButtonTop.setOpacity(0.65);
+
         String category = ((Button) event.getSource()).getText();
         if (category.equals("Frukt")) {
             fruitButton.setOpacity(1.0);
@@ -279,6 +283,16 @@ public class Controller implements ShoppingCartListener {
     @FXML
     void favoriteButtonPushed(ActionEvent event) {
         updateProducts(IMatDataHandler.getInstance().favorites());
+        fruitButton.setOpacity(0.65);
+        dairyButton.setOpacity(0.65);
+        sweetButton.setOpacity(0.65);
+        pantryButton.setOpacity(0.65);
+        meatButton.setOpacity(0.65);
+        vegetableButton.setOpacity(0.65);
+         breadButton.setOpacity(0.65);
+        drinksButton.setOpacity(0.65);
+        favoriteButtonTop.setOpacity(1.0);
+
     }
 
     @FXML

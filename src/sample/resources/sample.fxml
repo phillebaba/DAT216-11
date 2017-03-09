@@ -73,7 +73,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#favoriteButtonPushed" prefHeight="39.0" prefWidth="57.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color">
+                                    <Button fx:id="favoriteButtonTop" mnemonicParsing="false" onAction="#favoriteButtonPushed" opacity="0.65" prefHeight="39.0" prefWidth="57.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color">
                                        <effect>
                                           <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                        </effect>
