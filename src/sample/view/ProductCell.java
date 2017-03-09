@@ -98,7 +98,10 @@ public class ProductCell extends VBox {
                         amountField.setText(String.valueOf(Support.round(Double.valueOf(amountField.getText())-0.1)));
                     }
                 }else{
-                    amountField.setText(String.valueOf(Integer.valueOf(amountField.getText())-1));
+                    if(Integer.valueOf(amountField.getText()) > 1){
+                        amountField.setText(String.valueOf(Integer.valueOf(amountField.getText())-1));
+                    }
+
                 }
 
 
