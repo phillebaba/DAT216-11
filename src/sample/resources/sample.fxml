@@ -259,7 +259,7 @@
               <items>
                   <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0" style="-fx-background-color: background;" styleClass="default-primary-color">
                      <children>
-                        <GridPane prefHeight="69.0" prefWidth="398.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <GridPane hgap="5.0" prefHeight="69.0" prefWidth="398.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
