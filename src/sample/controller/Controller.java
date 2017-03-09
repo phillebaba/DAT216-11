@@ -148,6 +148,7 @@ public class Controller implements ShoppingCartListener {
             @Override
             public void handle(ActionEvent event) {
                 setRightHandView(deliveryView);
+                cartButton.setOpacity(0.5);
             }
         });
 
@@ -269,26 +270,25 @@ public class Controller implements ShoppingCartListener {
     @FXML
     void cartPushed(ActionEvent event) {
         setRightHandView(cartView);
-        historyButton.setOpacity(1.0);
-        accountButton.setOpacity(1.0);
-        cartButton.setOpacity(0.5);
-
+        historyButton.setOpacity(0.5);
+        accountButton.setOpacity(0.5);
+        cartButton.setOpacity(1.0);
     }
 
     @FXML
     void historyPushed(ActionEvent event) {
         setRightHandView(historyView);
-        historyButton.setOpacity(0.5);
-        accountButton.setOpacity(1.0);
-        cartButton.setOpacity(1.0);
+        historyButton.setOpacity(1.0);
+        accountButton.setOpacity(0.5);
+        cartButton.setOpacity(0.5);
     }
 
     @FXML
     void accountPushed(ActionEvent event) {
         setRightHandView(accountView);
-        historyButton.setOpacity(1.0);
-        accountButton.setOpacity(0.5);
-        cartButton.setOpacity(1.0);
+        historyButton.setOpacity(0.5);
+        accountButton.setOpacity(1.0);
+        cartButton.setOpacity(0.5);
     }
 
 
@@ -321,17 +321,14 @@ public class Controller implements ShoppingCartListener {
 
         if (cartEvent.isAddEvent()) {
             setRightHandView(cartView);
-            historyButton.setOpacity(1.0);
-            accountButton.setOpacity(1.0);
-            cartButton.setOpacity(0.5);
+            historyButton.setOpacity(0.5);
+            accountButton.setOpacity(0.5);
+            cartButton.setOpacity(1.0);
         }
 
         Boolean isCartEmpty = IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty();
         cartView.buyButton.setDisable(isCartEmpty);
     }
-
-
-
     /**
      * Changes the content in the right pane.
      *
