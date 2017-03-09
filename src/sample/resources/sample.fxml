@@ -269,7 +269,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="historyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#historyPushed" prefHeight="126.0" prefWidth="151.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Historik" GridPane.columnIndex="1">
+                              <Button fx:id="historyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#historyPushed" opacity="0.5" prefHeight="126.0" prefWidth="151.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Historik" GridPane.columnIndex="1">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                  </effect>
@@ -286,7 +286,7 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Button>
-                              <Button fx:id="cartButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#cartPushed" opacity="0.5" prefHeight="118.0" prefWidth="167.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Kundvagn">
+                              <Button fx:id="cartButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#cartPushed" prefHeight="118.0" prefWidth="167.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Kundvagn">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                  </effect>
@@ -303,7 +303,7 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Button>
-                              <Button fx:id="accountButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#accountPushed" prefHeight="80.0" prefWidth="153.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Konto" GridPane.columnIndex="2">
+                              <Button fx:id="accountButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#accountPushed" opacity="0.5" prefHeight="80.0" prefWidth="153.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Konto" GridPane.columnIndex="2">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
                                  </effect>
