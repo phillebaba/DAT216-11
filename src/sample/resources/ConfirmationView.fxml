@@ -5,62 +5,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="590.0" prefWidth="305.0" style="-fx-background-color: white;" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="389.0" style="-fx-background-color: background;" styleClass="default-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label prefHeight="55.0" text="Kundvagn" VBox.vgrow="NEVER">
+      <Label contentDisplay="CENTER" minHeight="-Infinity" prefHeight="55.0" prefWidth="442.0" style="-fx-background-color: background;" styleClass="default-primary-color" text="Bekräftelse" textFill="WHITE" VBox.vgrow="NEVER">
          <font>
-            <Font size="24.0" />
+            <Font size="19.0" />
          </font>
-         <padding>
-            <Insets left="8.0" />
-         </padding>
-      </Label>
-      <ListView fx:id="receiptList" prefHeight="0.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets left="5.0" right="5.0" />
          </VBox.margin>
-      </ListView>
-      <Label fx:id="totalLabel" contentDisplay="RIGHT" prefHeight="46.0" prefWidth="299.0" textAlignment="RIGHT">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-         <padding>
-            <Insets left="8.0" />
-         </padding>
       </Label>
-      <Label prefHeight="55.0" prefWidth="332.0" text="Betalningsuppgifter">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets left="8.0" />
-         </padding>
-      </Label>
-      <Label fx:id="nameLabel" prefHeight="25.0" prefWidth="277.0" text="Namn">
-         <VBox.margin>
-            <Insets left="8.0" />
-         </VBox.margin>
-      </Label>
-      <Label fx:id="adressLabel" prefHeight="25.0" prefWidth="280.0" text="Adress">
-         <VBox.margin>
-            <Insets left="8.0" />
-         </VBox.margin>
-      </Label>
-      <Label fx:id="cardLabel" prefHeight="25.0" prefWidth="283.0" text="Card">
-         <VBox.margin>
-            <Insets left="8.0" />
-         </VBox.margin>
-      </Label>
-      <HBox prefHeight="65.0" prefWidth="305.0">
+      <AnchorPane prefWidth="379.0" style="-fx-background-color: background;" styleClass="light-primary-color" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Tillbaka" HBox.hgrow="ALWAYS">
+            <Label layoutX="8.0" layoutY="14.0" prefHeight="15.0" text="Kundvagn" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ListView fx:id="receiptList" focusTraversable="false" layoutX="16.0" layoutY="52.0" prefHeight="294.0" prefWidth="362.0" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="50.0" />
+            <Label fx:id="totalLabel" contentDisplay="RIGHT" layoutY="334.0" prefHeight="46.0" prefWidth="299.0" text="Totalbelopp" textAlignment="RIGHT" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutY="391.0" prefHeight="15.0" prefWidth="332.0" text="Betalningsuppgifter" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" layoutX="8.0" layoutY="435.0" prefHeight="25.0" prefWidth="277.0" text="Namn" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="adressLabel" layoutX="8.0" layoutY="460.0" prefHeight="25.0" prefWidth="280.0" text="Adress" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="cardLabel" layoutX="8.0" layoutY="485.0" prefHeight="25.0" prefWidth="283.0" text="Card" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" />
+         </VBox.margin>
+      </AnchorPane>
+      <HBox prefHeight="70.0" prefWidth="389.0">
+         <children>
+            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Tillbaka" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="17.0" />
                </font>
@@ -68,7 +68,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.13" radius="5.532500000000001" width="12.0" />
                </effect>
             </Button>
-            <Button fx:id="confirmButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Bekräfta" HBox.hgrow="ALWAYS">
+            <Button fx:id="confirmButton" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Bekräfta" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="17.0" />
                </font>
@@ -78,7 +78,7 @@
             </Button>
          </children>
          <VBox.margin>
-            <Insets top="15.0" />
+            <Insets top="5.0" />
          </VBox.margin>
       </HBox>
    </children>

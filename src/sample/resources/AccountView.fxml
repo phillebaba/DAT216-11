@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="388.0" style="-fx-background-color: white;" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="388.0" style="-fx-background-color: background;" styleClass="default-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label opacity="0.87" prefHeight="55.0" prefWidth="417.0" style="-fx-text-fill: black;" text="Konto" VBox.vgrow="NEVER">
+      <Label prefHeight="55.0" prefWidth="442.0" style="-fx-text-fill: white;" text="Konto" VBox.vgrow="NEVER">
          <font>
             <Font size="19.0" />
          </font>
@@ -21,73 +21,73 @@
             <Insets left="8.0" />
          </VBox.margin>
       </Label>
-      <ScrollPane fitToWidth="true" prefHeight="0.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fx:id="account" fitToWidth="true" focusTraversable="false" prefHeight="0.0" styleClass="light-primary-color" VBox.vgrow="ALWAYS">
         <content>
-          <AnchorPane>
+          <AnchorPane prefWidth="376.0" style="-fx-background-color: background;" styleClass="light-primary-color">
                <children>
-                  <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox prefHeight="462.0" prefWidth="376.0" spacing="10.0" AnchorPane.bottomAnchor="-44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="BOTTOM_LEFT" opacity="0.87" prefHeight="15.0" prefWidth="316.0" text="Personuppgifter:">
+                        <Label alignment="BOTTOM_LEFT" prefHeight="15.0" prefWidth="316.0" text="Personuppgifter:">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="34.0" prefWidth="352.0" spacing="10.0">
                            <children>
-                              <TextField fx:id="customerFirstNameField" prefHeight="34.0" promptText="Förnamn" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="customerFirstNameField" prefHeight="34.0" promptText="Förnamn" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="customerLastNameField" prefHeight="34.0" promptText="Efternamn" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="customerLastNameField" prefHeight="34.0" promptText="Efternamn" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
                            </children>
                         </HBox>
-                        <TextField fx:id="customerAddressField" prefHeight="34.0" prefWidth="324.0" promptText="Adress" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                        <TextField fx:id="customerAddressField" prefHeight="34.0" prefWidth="324.0" promptText="Adress" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="customerEmailField" prefHeight="34.0" prefWidth="324.0" promptText="Epostadress" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                        <TextField fx:id="customerEmailField" prefHeight="34.0" prefWidth="324.0" promptText="Epostadress" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <HBox prefHeight="34.0" prefWidth="352.0" spacing="10.0">
                            <children>
-                              <TextField fx:id="customerPostCodeField" prefHeight="34.0" promptText="Postnummer" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                              <TextField fx:id="customerPostCodeField" prefHeight="34.0" promptText="Postnummer" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="customerPhonenumberField" prefHeight="34.0" promptText="Telefonnummer" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="customerPhonenumberField" prefHeight="34.0" promptText="Telefonnummer" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
                            </children>
                         </HBox>
-                        <TextField fx:id="customerPostAddressField" prefHeight="34.0" prefWidth="324.0" promptText="Postort" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                        <TextField fx:id="customerPostAddressField" prefHeight="34.0" prefWidth="324.0" promptText="Postort" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
-                        <Label alignment="BOTTOM_LEFT" opacity="0.87" prefHeight="15.0" prefWidth="181.0" text="Betalningsuppgifter:">
+                        <Label alignment="BOTTOM_LEFT" prefHeight="15.0" prefWidth="181.0" text="Betalningsuppgifter:">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cardNumberField" prefHeight="34.0" prefWidth="316.0" promptText="Kortnummer" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                        <TextField fx:id="cardNumberField" prefHeight="34.0" prefWidth="316.0" promptText="Kortnummer" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <HBox prefHeight="34.0" prefWidth="222.0" spacing="5.0">
                            <children>
-                              <TextField fx:id="cardMonthField" prefHeight="34.0" prefWidth="65.0" promptText="MM" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                              <TextField fx:id="cardMonthField" prefHeight="34.0" prefWidth="65.0" promptText="MM" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -97,7 +97,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="cardYearField" prefHeight="34.0" prefWidth="65.0" promptText="ÅÅ" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                              <TextField fx:id="cardYearField" prefHeight="34.0" prefWidth="65.0" promptText="ÅÅ" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -107,7 +107,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="cardCVCField" prefHeight="34.0" prefWidth="55.0" promptText="XXX" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                              <TextField fx:id="cardCVCField" prefHeight="34.0" prefWidth="55.0" promptText="XXX" style="-fx-background-color: white;" styleClass="text-field-primary-color" stylesheets="@palette.css">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -128,9 +128,9 @@
       </ScrollPane>
       <HBox prefHeight="65.0" prefWidth="388.0">
          <children>
-            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background;" styleClass="accent-color" text="Bakåt" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background;" styleClass="dark-primary-color" text="Bakåt" textFill="WHITE" HBox.hgrow="ALWAYS">
                <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.0" radius="5.5" width="12.0" />
                </effect>
                <font>
                   <Font size="17.0" />
@@ -138,7 +138,7 @@
             </Button>
             <Button fx:id="saveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background;" styleClass="accent-color" textFill="WHITE" HBox.hgrow="ALWAYS">
                <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.0" radius="5.5" width="12.0" />
                </effect>
                <font>
                   <Font size="17.0" />
@@ -146,7 +146,7 @@
             </Button>
             <Button fx:id="nextButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: background;" styleClass="accent-color" text="Nästa" textFill="WHITE" HBox.hgrow="ALWAYS">
                <effect>
-                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                  <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.0" radius="5.5" width="12.0" />
                </effect>
                <font>
                   <Font size="17.0" />

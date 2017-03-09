@@ -26,13 +26,13 @@
          <children>
             <SplitPane dividerPositions="0.2349799732977303" layoutX="38.0" layoutY="110.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: background;" styleClass="light-primary-color">
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="160.0" style="-fx-background-color: background;" styleClass="default-primary-color">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: background;" styleClass="light-primary-color" stylesheets="@palette.css">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="light-primary-color" stylesheets="@palette.css">
                                  <children>
-                                    <Label opacity="0.87" prefHeight="45.0" prefWidth="68.0" text="iMat">
+                                    <Label opacity="0.87" prefHeight="45.0" prefWidth="68.0" text="iMat" textFill="WHITE">
                                        <font>
                                           <Font size="30.0" />
                                        </font>
@@ -41,6 +41,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <effect>
+                                          <InnerShadow choke="0.13" color="#009688" height="17.0" radius="8.0" width="17.0" />
+                                       </effect>
                                     </TextField>
                                     <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="56.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color">
                                        <effect>
@@ -92,9 +95,9 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="fruitButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="41.0" prefWidth="205.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Frukt">
+                                    <Button fx:id="fruitButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Frukt">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -104,9 +107,9 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
+                                    <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -118,7 +121,7 @@
                                     </Button>
                                     <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Drycker" GridPane.columnIndex="1">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -130,7 +133,7 @@
                                     </Button>
                                     <Button fx:id="sweetButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -142,7 +145,7 @@
                                     </Button>
                                     <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Kött och Fisk" GridPane.columnIndex="2">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -154,7 +157,7 @@
                                     </Button>
                                     <Button fx:id="pantryButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Skafferi" GridPane.columnIndex="3">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -166,7 +169,7 @@
                                     </Button>
                                     <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.5" radius="5.625" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.25" radius="5.5625" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -176,9 +179,9 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                    <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <effect>
-                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.07" radius="5.5175" width="12.0" />
+                                          <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.035" radius="5.50875" width="12.0" />
                                        </effect>
                                        <styleClass>
                                           <String fx:value="dark-primary-color" />
@@ -214,7 +217,7 @@
          <children>
             <SplitPane dividerPositions="0.1321762349799733" layoutX="109.0" layoutY="51.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                  <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0" style="-fx-background-color: background;" styleClass="light-primary-color">
+                  <AnchorPane maxHeight="95.0" minHeight="95.0" prefHeight="95.0" prefWidth="398.0" style="-fx-background-color: background;" styleClass="default-primary-color">
                      <children>
                         <GridPane prefHeight="69.0" prefWidth="398.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                           <columnConstraints>

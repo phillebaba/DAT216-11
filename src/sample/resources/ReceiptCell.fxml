@@ -3,11 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="rootPane" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="364.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="rootPane" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="346.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="productLabel" maxWidth="1.7976931348623157E308" prefWidth="100.0" text="Product" HBox.hgrow="ALWAYS" />
-      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" text="Price SEK" HBox.hgrow="SOMETIMES" />
+      <Label fx:id="productLabel" focusTraversable="false" maxWidth="1.7976931348623157E308" prefWidth="100.0" text="Product" HBox.hgrow="ALWAYS">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Label>
+      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" focusTraversable="false" text="Price SEK" textAlignment="RIGHT" HBox.hgrow="SOMETIMES">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Label>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

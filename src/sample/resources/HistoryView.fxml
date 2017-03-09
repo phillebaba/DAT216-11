@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="399.0" style="-fx-background-color: white;" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="399.0" style="-fx-background-color: background;" styleClass="default-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label prefHeight="55.0" prefWidth="399.0" stylesheets="@palette.css" text="Historik" VBox.vgrow="NEVER">
+      <Label prefHeight="55.0" prefWidth="399.0" style="-fx-background-color: background;" styleClass="default-primary-color" stylesheets="@palette.css" text="Historik" textFill="WHITE" VBox.vgrow="NEVER">
          <padding>
             <Insets left="8.0" />
          </padding>

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: white;" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="683.0" prefWidth="332.0" style="-fx-background-color: background;" styleClass="default-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label prefHeight="55.0" style="-fx-text-fill: black;" text="Kundvagn" VBox.vgrow="NEVER">
+      <Label prefHeight="55.0" style="-fx-text-fill: white;" text="Kundvagn" VBox.vgrow="NEVER">
          <font>
             <Font size="19.0" />
          </font>
@@ -20,11 +20,11 @@
       </Label>
       <ListView fx:id="cartList" prefHeight="0.0" prefWidth="332.0" VBox.vgrow="SOMETIMES">
          <VBox.margin>
-            <Insets left="5.0" right="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" />
          </VBox.margin></ListView>
       <Button fx:id="buyButton" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="accent-color" text="Kassa" VBox.vgrow="ALWAYS">
          <effect>
-            <InnerShadow choke="0.1" color="#b98620" height="90.19" radius="43.04" width="83.97" />
+            <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="12.0" radius="5.5" width="12.0" />
          </effect>
          <font>
             <Font size="20.0" />
