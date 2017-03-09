@@ -50,6 +50,9 @@ public class ProductCell extends VBox {
     private Button favoriteButton;
 
     @FXML
+    private ImageView favoriteImageView;
+
+    @FXML
     private Label nameLable;
 
     @FXML
@@ -82,9 +85,10 @@ public class ProductCell extends VBox {
         imageView.setImage(IMatDataHandler.getInstance().getFXImage(product));
         nameLable.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
-        if(Support.isDivisible(product)){
+        //setFavoriteIcon(IMatDataHandler.getInstance().isFavorite(product));
+        if (Support.isDivisible(product)){
             amountField.setText("1.0");
-        }else{
+        } else{
             amountField.setText("1");
         }
 
@@ -128,7 +132,11 @@ public class ProductCell extends VBox {
         favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                IMatDataHandler.getInstance().addFavorite(product);
+                if (IMatDataHandler.getInstance().isFavorite(product)) {
+                    IMatDataHandler.getInstance().addFavorite(product);
+                } else {
+                    IMatDataHandler.getInstance().removeFavorite(product);
+                }
             }
         });
 
@@ -162,4 +170,11 @@ public class ProductCell extends VBox {
             }
         });
     }
+
+    private void setFavoriteIcon(Boolean favorited) {
+
+        favoriteImageView.setImage(new Image("file:favorite_border.png"));
+    }
+
+
 }
