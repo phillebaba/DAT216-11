@@ -24,7 +24,7 @@
 
 .text-input {
 -fx-text-fill: black;
--fx-prompt-text-fill: lightgray;
+-fx-prompt-text-fill: gray;
 }
 
 
