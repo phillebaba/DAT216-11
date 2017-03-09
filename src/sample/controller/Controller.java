@@ -178,9 +178,9 @@ public class Controller implements ShoppingCartListener {
                     IMatDataHandler.getInstance().getCreditCard().setValidYear(Integer.parseInt(accountView.cardYearField.getText()));
 
                     char[] digits = accountView.cardNumberField.getText().toCharArray();
-                    if (digits[0] == '4') {
+                    if (digits.length > 0 && digits[0] == '4') {
                         IMatDataHandler.getInstance().getCreditCard().setCardType("VISA");
-                    } else if (digits[0] == '5' && digits[1] < '6') {
+                    } else if (digits.length > 1 && digits[0] == '5' && digits[1] < '6') {
                         IMatDataHandler.getInstance().getCreditCard().setCardType("MasterCard");
                     } else {
                         IMatDataHandler.getInstance().getCreditCard().setCardType("Unknown");
