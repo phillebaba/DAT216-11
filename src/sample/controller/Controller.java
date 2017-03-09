@@ -19,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 import sample.view.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -64,6 +65,15 @@ public class Controller implements ShoppingCartListener {
 
     @FXML
     private StackPane rightPane;
+
+    @FXML
+    private Button accountButton;
+
+    @FXML
+    private Button historyButton;
+
+    @FXML
+    private Button cartButton;
 
     @FXML
     void initialize() {
@@ -259,16 +269,26 @@ public class Controller implements ShoppingCartListener {
     @FXML
     void cartPushed(ActionEvent event) {
         setRightHandView(cartView);
+        historyButton.setOpacity(1.0);
+        accountButton.setOpacity(1.0);
+        cartButton.setOpacity(0.5);
+
     }
 
     @FXML
     void historyPushed(ActionEvent event) {
         setRightHandView(historyView);
+        historyButton.setOpacity(0.5);
+        accountButton.setOpacity(1.0);
+        cartButton.setOpacity(1.0);
     }
 
     @FXML
     void accountPushed(ActionEvent event) {
         setRightHandView(accountView);
+        historyButton.setOpacity(1.0);
+        accountButton.setOpacity(0.5);
+        cartButton.setOpacity(1.0);
     }
 
 
@@ -301,6 +321,9 @@ public class Controller implements ShoppingCartListener {
 
         if (cartEvent.isAddEvent()) {
             setRightHandView(cartView);
+            historyButton.setOpacity(1.0);
+            accountButton.setOpacity(1.0);
+            cartButton.setOpacity(0.5);
         }
 
         Boolean isCartEmpty = IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty();
