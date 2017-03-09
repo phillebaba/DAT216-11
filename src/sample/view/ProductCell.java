@@ -132,7 +132,7 @@ public class ProductCell extends VBox {
         favoriteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (IMatDataHandler.getInstance().isFavorite(product)) {
+                if (!IMatDataHandler.getInstance().isFavorite(product)) {
                     IMatDataHandler.getInstance().addFavorite(product);
                 } else {
                     IMatDataHandler.getInstance().removeFavorite(product);
