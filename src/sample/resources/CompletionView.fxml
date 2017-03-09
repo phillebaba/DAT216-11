@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -19,6 +20,9 @@
          </font>
          <effect>
             <InnerShadow choke="1.0" color="WHITE" height="4.5" radius="1.75" width="4.5" />
-         </effect></Button>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </fx:root>

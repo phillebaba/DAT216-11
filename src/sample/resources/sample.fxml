@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -44,6 +45,9 @@
                                        <effect>
                                           <InnerShadow choke="0.13" color="#009688" height="17.0" radius="8.0" width="17.0" />
                                        </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
                                     </TextField>
                                     <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonPushed" prefHeight="39.0" prefWidth="56.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color">
                                        <effect>
@@ -60,8 +64,14 @@
                                              <image>
                                                 <Image url="@search.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                        </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button mnemonicParsing="false" onAction="#favoriteButtonPushed" prefHeight="39.0" prefWidth="57.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color">
                                        <effect>
@@ -78,8 +88,14 @@
                                              <image>
                                                 <Image url="@favorite_fill.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                        </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                  </children>
                               </HBox>
@@ -106,6 +122,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Mejeri" GridPane.rowIndex="1">
                                        <effect>
@@ -118,6 +137,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Drycker" GridPane.columnIndex="1">
                                        <effect>
@@ -130,6 +152,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="sweetButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Sötsaker" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <effect>
@@ -142,6 +167,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="meatButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Kött och Fisk" GridPane.columnIndex="2">
                                        <effect>
@@ -154,6 +182,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="pantryButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Skafferi" GridPane.columnIndex="3">
                                        <effect>
@@ -166,6 +197,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="breadButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Bröd" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <effect>
@@ -178,6 +212,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Button fx:id="vegetableButton" mnemonicParsing="false" onAction="#categoryButtonPushed" prefHeight="70.0" prefWidth="170.0" style="-fx-background-color: background; -fx-text-fill: white;" stylesheets="@palette.css" text="Grönt" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <effect>
@@ -190,6 +227,9 @@
                                        <font>
                                           <Font size="17.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                  </children>
                               </GridPane>
@@ -242,7 +282,10 @@
                                           <Image url="@history.png" />
                                        </image>
                                     </ImageView>
-                                 </graphic></Button>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                               <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#cartPushed" prefHeight="118.0" prefWidth="167.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Kundvagn">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
@@ -256,7 +299,10 @@
                                           <Image url="@cart.png" />
                                        </image>
                                     </ImageView>
-                                 </graphic></Button>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                               <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#accountPushed" prefHeight="80.0" prefWidth="153.0" style="-fx-background-color: background; -fx-text-fill: white;" styleClass="dark-primary-color" text="Konto" GridPane.columnIndex="2">
                                  <effect>
                                     <InnerShadow blurType="ONE_PASS_BOX" choke="1.0" color="WHITE" height="13.0" radius="5.75" width="12.0" />
@@ -270,7 +316,10 @@
                                           <Image url="@account.png" />
                                        </image>
                                     </ImageView>
-                                 </graphic></Button>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                            </children>
                         </GridPane>
                      </children>
