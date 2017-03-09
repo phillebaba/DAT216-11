@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root alignment="TOP_CENTER" prefHeight="349.0" prefWidth="225.0" spacing="5.0" style="-fx-background-color: white; -fx-border-color: gray;" styleClass="light-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" style="-fx-background-color: white; -fx-border-color: gray;" styleClass="light-primary-color" stylesheets="@palette.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="187.0" prefWidth="285.0">
          <children>
