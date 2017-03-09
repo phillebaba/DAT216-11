@@ -5,7 +5,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -80,7 +82,11 @@
             </Button>
             <Button fx:id="favoriteButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: background;" styleClass="dark-primary-color" stylesheets="@palette.css">
                <graphic>
-                  <ImageView fx:id="favoriteImageView" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="favoriteImageView" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@favorite_border.png" />
+                     </image>
+                  </ImageView>
                </graphic>
             </Button>
          </children>
@@ -92,4 +98,7 @@
    <padding>
       <Insets bottom="10.0" />
    </padding>
+   <effect>
+      <DropShadow blurType="TWO_PASS_BOX" height="15.0" radius="7.0" width="15.0" />
+   </effect>
 </fx:root>
