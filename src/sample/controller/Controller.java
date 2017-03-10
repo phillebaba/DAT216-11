@@ -89,7 +89,8 @@ public class Controller implements ShoppingCartListener {
         assert dairyButton != null : "fx:id=\"dairyButton\" was not injected: check your FXML file 'sample.fxml'.";
         assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'sample.fxml'.";
         assert productPane != null : "fx:id=\"productPane\" was not injected: check your FXML file 'sample.fxml'.";
-
+        // todo temp,
+        historyView.setController(this);
         // Setup product map translation from button to categories
         ArrayList<ProductCategory> fruitList = new ArrayList<ProductCategory>();
         fruitList.add(ProductCategory.BERRY);
@@ -396,7 +397,7 @@ public class Controller implements ShoppingCartListener {
      *
      * @param productList List of products to draw
      */
-    private void updateProducts(List<Product> productList) {
+    public void updateProducts(List<Product> productList) {
         // Empty all of the existing items
         productPane.getChildren().clear();
 
@@ -404,6 +405,17 @@ public class Controller implements ShoppingCartListener {
             ProductCell cell = new ProductCell();
             cell.updateItem(product);
             productPane.getChildren().add(cell);
+        }
+    }
+    public void updateProductsSI(List<ShoppingItem> productList) {
+        // Empty all of the existing items
+        productPane.getChildren().clear();
+
+        for (ShoppingItem sI : productList) {
+            ProductCell cell = new ProductCell();
+            cell.updateItem(sI.getProduct());
+            productPane.getChildren().add(cell);
+            cell.setAmount(sI.getAmount());
         }
     }
 

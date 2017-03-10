@@ -184,5 +184,8 @@ public class ProductCell extends VBox {
         String fileName = favorited ? "../resources/favorite_fill.png" : "../resources/favorite_border.png";
         favoriteImageView.setImage(new Image(getClass().getResourceAsStream(fileName)));
     }
+    public void setAmount(double d){
+        amountField.setText(d + "");
+    }
 
 }
