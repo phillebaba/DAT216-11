@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import sample.Support;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -88,11 +89,11 @@ public class AccountView extends VBox {
         assert nextButton != null : "fx:id=\"nextButton\" was not injected: check your FXML file 'AccountView.fxml'.";
         assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'AccountView.fxml'.";
 
-        checkComplete();
+        allowChange();
         ChangeListener<String> changeListener = new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                checkComplete();
+                allowChange();
             }
         };
 
@@ -109,9 +110,30 @@ public class AccountView extends VBox {
         customerPostAddressField.textProperty().addListener(changeListener);
     }
 
-    private void checkComplete() {
-        Boolean complete = customerFirstNameField.getText().length() > 0 && customerLastNameField.getText().length() > 0 &&  customerPostCodeField.getText().length() > 0 && customerAddressField.getText().length() > 0 && customerEmailField.getText().length() > 0 && customerPhonenumberField.getText().length() > 0 && cardNumberField.getText().length() > 0 && cardCVCField.getText().length() > 0 && cardMonthField.getText().length() > 0 && cardYearField.getText().length() > 0 && customerPostAddressField.getText().length() > 0;
-        nextButton.setDisable(!complete);
+    public boolean checkComplete() {
+        Boolean complete = customerFirstNameField.getText().length() > 0 &&
+                customerLastNameField.getText().length() > 0 &&
+                customerPostCodeField.getText().length() > 0 &&
+                customerAddressField.getText().length() > 0 &&
+                customerEmailField.getText().length() > 0 &&
+                customerPhonenumberField.getText().length() > 0 &&
+                cardNumberField.getText().length() > 0 &&
+                cardCVCField.getText().length() > 0 &&
+                cardMonthField.getText().length() > 0 &&
+                cardYearField.getText().length() > 0 &&
+                customerPostAddressField.getText().length() > 0 &&
+                Support.isNumeric(customerPhonenumberField.getText()) &&
+                Support.isNumeric(cardNumberField.getText()) &&
+                Support.isNumeric(customerPostCodeField.getText()) &&
+                Support.isNumeric(cardCVCField.getText()) &&
+                Support.isNumeric(cardMonthField.getText()) &&
+                Support.isNumeric(cardYearField.getText());
+
+        return complete;
+    }
+
+    private void allowChange(){
+        nextButton.setDisable(!checkComplete());
     }
 
 
@@ -136,7 +158,7 @@ public class AccountView extends VBox {
         customerPostCodeField.setText(customer.getPostCode());
         customerPostAddressField.setText(customer.getPostAddress());
         cardNumberField.setText(creditCard.getCardNumber());
-        //cardCVCField.setText(String.valueOf(creditCard.getVerificationCode()));
+        cardCVCField.setText(String.valueOf(creditCard.getVerificationCode()));
         cardYearField.setText(String.valueOf(creditCard.getValidYear()));
         cardMonthField.setText(String.valueOf(creditCard.getValidMonth()));
     }

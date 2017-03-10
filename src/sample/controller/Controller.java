@@ -158,7 +158,7 @@ public class Controller implements ShoppingCartListener {
         accountView.saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (accountView.getEditing()) {
+                if (accountView.getEditing() && accountView.checkComplete()) {
                     IMatDataHandler.getInstance().getCustomer().setFirstName(accountView.customerFirstNameField.getText());
                     IMatDataHandler.getInstance().getCustomer().setLastName(accountView.customerLastNameField.getText());
                     IMatDataHandler.getInstance().getCustomer().setEmail(accountView.customerEmailField.getText());
@@ -205,7 +205,9 @@ public class Controller implements ShoppingCartListener {
             @Override
             public void handle(ActionEvent event) {
                 setRightHandView(confirmationView);
+                IMatDataHandler.getInstance().getCreditCard().setVerificationCode(0);
             }
+
         });
 
         // Confirmation View Buttons
@@ -230,6 +232,7 @@ public class Controller implements ShoppingCartListener {
             public void handle(ActionEvent event) {
                 setRightHandView(cartView);
             }
+
         });
 
         // Add self as observer of the shopping cart

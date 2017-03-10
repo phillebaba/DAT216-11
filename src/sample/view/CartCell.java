@@ -92,12 +92,6 @@ public class CartCell extends ListCell<ShoppingItem> {
         });
     }
 
-    public static boolean isNumeric(String str) {
-        for (char c : str.toCharArray()) {
-            if (!Character.isDigit(c)) return false;
-        }
-        return true;
-    }
 
     private void setProductName(String string) {
         productNameLabel.setText(string);
@@ -126,7 +120,7 @@ public class CartCell extends ListCell<ShoppingItem> {
     }
 
     private void setProductAmount() {
-        if (isNumeric(amountField.getText())) {
+        if (Support.isNumeric(amountField.getText())) {
             if(Support.isDivisible(cartItem.getProduct())){
                 cartItem.setAmount(Double.valueOf(amountField.getText()));
             }else{
